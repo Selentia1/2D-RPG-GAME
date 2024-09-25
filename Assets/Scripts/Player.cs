@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     //图层遮罩用于检测是否接触地面，将需要检测的物体设置到Ground图层
     [SerializeField] private LayerMask layerMask_Ground;
     //检测射线最大距离
-    [SerializeField] private float MaxDistanceToGround;
+    [SerializeField] private float GroundCheckDistance;
     //判断玩家是否在地面
     private bool isGround;
 
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         moveSpeed = 5;
         jumpForce = 15;
         direction = FaceDirection.RIGHT;
-        MaxDistanceToGround = 100;
+        GroundCheckDistance = 1.02f;
     }
 
     // Update is called once per frame
@@ -120,7 +120,12 @@ public class Player : MonoBehaviour
 
     //控制玩家能否跳跃
     private void JumpController() {
-        isGround = Physics2D.Raycast(transform.position, Vector2.down, MaxDistanceToGround, layerMask_Ground);
+        isGround = Physics2D.Raycast(transform.position, Vector2.down, GroundCheckDistance, layerMask_Ground);
     }
 
+    //画出检测射线
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position,new Vector3(transform.position.x, transform.position.y - GroundCheckDistance));
+    }
 }

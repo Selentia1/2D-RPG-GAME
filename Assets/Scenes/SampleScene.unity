@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 555625591, guid: b1a3e32d657a7d64288e4e18990c0e01, type: 3}
+      propertyPath: GroundCheckDistance
+      value: 1.02
+      objectReference: {fileID: 0}
     - target: {fileID: 605290222317500090, guid: b1a3e32d657a7d64288e4e18990c0e01, type: 3}
       propertyPath: m_Name
       value: player
