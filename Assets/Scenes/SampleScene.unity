@@ -130,17 +130,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 555625591, guid: b1a3e32d657a7d64288e4e18990c0e01, type: 3}
-      propertyPath: GroundCheckDistance
-      value: 1.02
-      objectReference: {fileID: 0}
     - target: {fileID: 605290222317500090, guid: b1a3e32d657a7d64288e4e18990c0e01, type: 3}
       propertyPath: m_Name
       value: player
-      objectReference: {fileID: 0}
-    - target: {fileID: 605290222317500090, guid: b1a3e32d657a7d64288e4e18990c0e01, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 605290222317500094, guid: b1a3e32d657a7d64288e4e18990c0e01, type: 3}
       propertyPath: m_RootOrder
@@ -374,8 +366,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246542356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.28, y: -5.19, z: 0}
-  m_LocalScale: {x: 16.609163, y: 1.6663, z: 1}
+  m_LocalPosition: {x: -10.9483, y: -5.19, z: 0}
+  m_LocalScale: {x: 31.946066, y: 1.6663, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -407,7 +399,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1396053208}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 559b1464f93860c41aafa2b04711b55b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
