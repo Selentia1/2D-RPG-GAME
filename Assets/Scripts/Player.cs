@@ -6,22 +6,15 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Accessibility;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    [Header("Move And Jump")]
-    //角色的移动速度和跳跃力
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpForce;
-   
-    //是否在移动
-    [SerializeField] private bool isMoving;
-
     //判断玩家跳跃次数来实现二段跳
-    [SerializeField] private int jumpTimes;
+    private int jumpTimes;
 
     //用于存储移动跳跃时获得的瞬时速度
     private float velocityMove;
     private float velocityDash;
+    private float velocityAattck;
 
     [Header("Dash Info")]
     //冲刺计时器
@@ -37,63 +30,52 @@ public class Player : MonoBehaviour
     //冲刺状态
     [SerializeField] private bool isDash;
 
-    [Header("Physical Component")]
-    //获取组件
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Collider2D collider2D;
-    private Animator animator;
-
-    [Header("Collider Check")]
-    //图层遮罩用于检测是否接触地面，将需要检测的物体设置到Ground图层
-    [SerializeField] private LayerMask layerMask_Ground;
-    //检测射线最大距离
-    [SerializeField] private float GroundCheckDistance;
-    //判断玩家是否在地面
-    [SerializeField] private bool isGround;
-    
-
-    //角色朝向
-    private enum FaceDirection {
-        RIGHT = -1,
-        LEFT = 1
-    }
-    private FaceDirection direction;
-    
+    [Header("Attack Info")]
+    //攻击状态
+    [SerializeField] private bool isAttack;
+    //连击段数
+    [SerializeField] private int attackComboo;
+    //连击数重置计时器
+    [SerializeField] private float combooResetTimer;
+    //连击数重置周期
+    [SerializeField] private float combooResetDuration;
+    //攻击间隔
+    [SerializeField] private float acttckDuration;
+    //攻击间隔计时器
+    [SerializeField] private float attackTimer;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        collider2D = GetComponent<Collider2D>();
-        animator = GetComponentInChildren<Animator>();
-        
-        rb.velocity = Vector2.zero;
-        moveSpeed = 5;
-        jumpForce = 15;
+        base.Start();
         direction = FaceDirection.RIGHT;
         GroundCheckDistance = 1.02f;
         isGround = true;
+        rb.velocity = Vector2.zero;
+        moveSpeed = 5;
+        jumpForce = 15;
         jumpTimes = 0;
         dashSpeed = 15;
         dashDuration = 0.3f;
-        dashCoolDown = 1;                                    
+        dashCoolDown = 1;
+        combooResetDuration = 0.6f;
+        acttckDuration = 0.4f;
+        attackComboo = -1;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        Movement();
         GetInPut();
-        ActionTimer();
-
-        ColliderController();
+        Movement();
+        
+        ActionTimers();
         AnimatorControllers();
-        FlipController();
-
+        base.Update();
     }
 
     //动作相关的计时器
-    private void ActionTimer()
+    private void ActionTimers()
     {
         //冲刺计时器
         if (dashTimer > 0)
@@ -105,9 +87,20 @@ public class Player : MonoBehaviour
             isDash = false;
         }
 
+        //冲刺CD计时器
         if (dashCDTimer > 0)
         {
             dashCDTimer -= Time.deltaTime;
+        }
+
+        //攻击计时器
+        if (combooResetTimer > 0) {
+            combooResetTimer -= Time.deltaTime;
+        }
+
+        //连续攻击间隔计时器
+        if (attackTimer > 0) {
+            attackTimer -= Time.deltaTime;
         }
     }
 
@@ -127,17 +120,47 @@ public class Player : MonoBehaviour
         {
             Dash();
         }
+
+        if (Input.GetKeyDown(KeyCode.X)) {
+            Attack();
+        }
+    }
+
+    //人物普通攻击
+    protected override void Attack()
+    {
+        //如果超出连击的计数时间，则重置Comboo
+        if (combooResetTimer < 0) {
+            attackComboo = -1;
+        }
+
+        //如果没有在滑行状态且没有在攻击间隔内，则执行攻击动作
+        if (!isDash && attackTimer <= 0) {
+            isAttack = true;
+            
+            combooResetTimer = combooResetDuration;
+            attackTimer = acttckDuration;
+
+            //如果attackComboo>3则恢复为0
+            attackComboo++;
+            attackComboo = attackComboo % 3;
+        }
+    }
+
+    //攻击结束，挂载到动画最后一帧
+    public void AttackOver() {
+        isAttack = false;
     }
 
     //人物冲刺
     private void Dash()
     {
-        if (dashCDTimer <= 0) 
+        if (dashCDTimer <= 0)
         {
             isDash = true;
             dashTimer = dashDuration;
             dashCDTimer = dashCoolDown;
-
+        
             if (direction == FaceDirection.LEFT)
             {
                 velocityDash = -dashSpeed;
@@ -150,7 +173,7 @@ public class Player : MonoBehaviour
     }
 
     //人物移动
-    private void Movement()
+    protected override void Movement()
     {
         //人物移动状态控制
         //isMoving = (rb.velocity.x != 0);
@@ -168,18 +191,29 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector2(velocityDash, 0);
         }
-        else {
+        else if (isAttack && isMoving && !isGround )
+        {
+            rb.velocity = new Vector2(velocityMove * 0.3f, rb.velocity.y);
+        }
+        else if (isAttack && isMoving)
+        { 
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        else if(!isAttack)
+        {
             rb.velocity = new Vector2(velocityMove, rb.velocity.y);
         }
         
     }
 
     //动画控制器
-    private void AnimatorControllers() {
+    protected override void AnimatorControllers() {
         animator.SetBool("isMoving", isMoving);
         animator.SetBool("isGround", isGround);
         animator.SetFloat("velocityY", rb.velocity.y);
         animator.SetBool("isDash", isDash);
+        animator.SetBool("isAttack", isAttack);
+        animator.SetInteger("attackComboo", attackComboo);
     }
 
     //修正跳跃次数
@@ -189,10 +223,8 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
     //跳跃
-    private void Jump() {
+    protected override void Jump() {
         //二段跳实现
         if (isGround || jumpTimes<2) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -201,26 +233,6 @@ public class Player : MonoBehaviour
         
     }
     
-    //翻转人物
-    private void Filp(){
-        direction = (direction == FaceDirection.LEFT ? FaceDirection.RIGHT: FaceDirection.LEFT);
-        transform.Rotate(0, 180, 0);
-    }
-
-    //翻转控制器
-    private void FlipController() {
-        if (rb.velocity.x > 0 && direction != FaceDirection.RIGHT) {
-            Filp();
-        } else if (rb.velocity.x < 0 && direction != FaceDirection.LEFT) {
-            Filp();
-        }
-    }
-
-    //碰撞检测
-    private void ColliderController() {
-        isGround = Physics2D.Raycast(transform.position, Vector2.down, GroundCheckDistance, layerMask_Ground);
-    }
-
     //画出检测射线
     private void OnDrawGizmos()
     {
