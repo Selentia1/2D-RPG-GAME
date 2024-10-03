@@ -49,11 +49,11 @@ public class Player : Entity
     {
         base.Start();
         direction = FaceDirection.RIGHT;
-        GroundCheckDistance = 1.02f;
+        
         isGround = true;
         rb.velocity = Vector2.zero;
         moveSpeed = 5;
-        jumpForce = 15;
+        jumpForce = 20;
         jumpTimes = 0;
         dashSpeed = 15;
         dashDuration = 0.3f;
@@ -68,10 +68,11 @@ public class Player : Entity
     {
         GetInPut();
         Movement();
-        
         ActionTimers();
+
         AnimatorControllers();
         base.Update();
+        FlipController();
     }
 
     //动作相关的计时器
@@ -232,10 +233,17 @@ public class Player : Entity
         }
         
     }
-    
-    //画出检测射线
-    private void OnDrawGizmos()
+
+    //翻转控制器
+    protected override void FlipController()
     {
-        Gizmos.DrawLine(transform.position,new Vector3(transform.position.x, transform.position.y - GroundCheckDistance));
+        if (rb.velocity.x > 0 && direction != FaceDirection.RIGHT)
+        {
+            Filp();
+        }
+        else if (rb.velocity.x < 0 && direction != FaceDirection.LEFT)
+        {
+            Filp();
+        }
     }
 }
