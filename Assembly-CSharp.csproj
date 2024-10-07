@@ -61,10 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Entity.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Player\IdleState.cs" />
+    <Compile Include="Assets\Scripts\Player\MoveState.cs" />
     <Compile Include="Assets\Scripts\PlayerActionEvents.cs" />
     <Compile Include="Assets\Scripts\Enemy_Skeleton.cs" />
+    <Compile Include="Assets\Scripts\OldPlayer.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
+    <Compile Include="Assets\Scripts\Player\AirState.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Player\GroundedState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

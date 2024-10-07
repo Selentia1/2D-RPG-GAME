@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerActionEvents : MonoBehaviour
 {
-    private Player player;
+    private OldPlayer player;
     void Start()
     {
-        player = GetComponentInParent<Player>();
+        player = GetComponentInParent<OldPlayer>();
     }
 
     private void AnimationTigger() { 

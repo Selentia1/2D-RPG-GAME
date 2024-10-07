@@ -6,7 +6,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Accessibility;
 
-public class Player : Entity
+public class OldPlayer : Entity
 {
     //判断玩家跳跃次数来实现二段跳
     private int jumpTimes;
