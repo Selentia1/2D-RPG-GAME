@@ -84,28 +84,28 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-26" value="&lt;font face=&quot;Comic Sans MS&quot;&gt;Jump/Fall State&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;container=1;recursiveResize=0;treeFolding=1;strokeWidth=2;shadow=1;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-24">
-          <mxGeometry x="50" y="47" width="154" height="113" as="geometry" />
+          <mxGeometry x="34.5" y="72" width="154" height="113" as="geometry" />
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-27" value="&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Jump/Fall&amp;nbsp;&lt;/span&gt;&lt;/font&gt;State" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-24">
-          <mxGeometry x="240" y="44" width="197" height="119" as="geometry" />
+          <mxGeometry x="224.5" y="69" width="197" height="119" as="geometry" />
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-28" value="isAir is true&lt;div&gt;yVelocity !=0&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-27">
           <mxGeometry x="56.5" y="43" width="86" height="41" as="geometry" />
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-39" value="&lt;font face=&quot;Comic Sans MS&quot;&gt;&amp;nbsp;WallSlide State&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;container=1;recursiveResize=0;treeFolding=1;strokeWidth=2;shadow=1;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-24">
-          <mxGeometry x="50" y="211" width="154" height="113" as="geometry" />
+          <mxGeometry x="34.5" y="236" width="154" height="113" as="geometry" />
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-45" value="&lt;span style=&quot;font-family: &amp;quot;Comic Sans MS&amp;quot;; font-weight: 400;&quot;&gt;WallSlide&lt;/span&gt;State" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-24">
-          <mxGeometry x="240" y="208" width="197" height="119" as="geometry" />
+          <mxGeometry x="224.5" y="233" width="197" height="119" as="geometry" />
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-46" value="isAir is true&lt;div&gt;wallDetected have&amp;nbsp;&lt;/div&gt;&lt;div&gt;checked the wall&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-45">
           <mxGeometry x="39.5" y="37" width="119" height="55" as="geometry" />
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-49" value="&lt;font face=&quot;Comic Sans MS&quot;&gt;&amp;nbsp;AirAttack State&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;container=1;recursiveResize=0;treeFolding=1;strokeWidth=2;shadow=1;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-24">
-          <mxGeometry x="50" y="392" width="154" height="113" as="geometry" />
+          <mxGeometry x="34.5" y="417" width="154" height="113" as="geometry" />
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-50" value="&lt;span style=&quot;font-family: &amp;quot;Comic Sans MS&amp;quot;; font-weight: 400;&quot;&gt;AirAttack&lt;/span&gt;State" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-24">
-          <mxGeometry x="240" y="389" width="197" height="119" as="geometry" />
+          <mxGeometry x="224.5" y="414" width="197" height="119" as="geometry" />
         </mxCell>
         <mxCell id="QkjuUNl8bwBorOm8PweC-51" value="isAir is true&lt;div&gt;isAttack is true&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="QkjuUNl8bwBorOm8PweC-50">
           <mxGeometry x="51.5" y="44" width="96" height="41" as="geometry" />
