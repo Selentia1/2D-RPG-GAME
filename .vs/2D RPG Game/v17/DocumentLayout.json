@@ -1,12 +1,192 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\local unity project\\2D RPG Game\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\groundedstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\groundedstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|e:\\local unity project\\2d rpg game\\assets\\scripts\\player\\risestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\risestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|e:\\local unity project\\2d rpg game\\assets\\scripts\\player\\fallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\fallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|e:\\local unity project\\2d rpg game\\assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.2d.common@8.0.3\\Path\\Editor\\EditorTool\\PathEditorTool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.2d.common@8.0.3\\Path\\Editor\\EditorTool\\PathEditorTool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.ai.navigation@1.1.5\\Runtime\\NavMeshSurface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.ai.navigation@1.1.5\\Runtime\\NavMeshSurface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.2d.common@8.0.3\\Editor\\TextureGenerator\\TextureGeneratorHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.2d.common@8.0.3\\Editor\\TextureGenerator\\TextureGeneratorHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FallState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\FallState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\FallState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\FallState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\FallState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T05:52:54.504Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RiseState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\RiseState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\RiseState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\RiseState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\RiseState.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowB8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T05:53:41.467Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Entity.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Entity.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Entity.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Entity.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAywDEAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T05:34:34.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GroundedState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\GroundedState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\GroundedState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\GroundedState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\GroundedState.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAA7wB0AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T05:06:46.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\PlayerState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\PlayerState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerState.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T04:54:12.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MoveState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\MoveState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\MoveState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\MoveState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\MoveState.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAowBkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T05:29:47.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Player.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Player.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\Player.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAswC8AAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T05:04:19.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NavMeshSurface.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.ai.navigation@1.1.5\\Runtime\\NavMeshSurface.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.ai.navigation@1.1.5\\Runtime\\NavMeshSurface.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.ai.navigation@1.1.5\\Runtime\\NavMeshSurface.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.unity.ai.navigation@1.1.5\\Runtime\\NavMeshSurface.cs",
+              "ViewState": "AQIAAH0CAAAAAAAAAAAwwIoCAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T02:06:44.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PathEditorTool.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.2d.common@8.0.3\\Path\\Editor\\EditorTool\\PathEditorTool.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.2d.common@8.0.3\\Path\\Editor\\EditorTool\\PathEditorTool.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.2d.common@8.0.3\\Path\\Editor\\EditorTool\\PathEditorTool.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.unity.2d.common@8.0.3\\Path\\Editor\\EditorTool\\PathEditorTool.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAwwGsAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T01:56:30.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TextureGeneratorHelper.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.2d.common@8.0.3\\Editor\\TextureGenerator\\TextureGeneratorHelper.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.2d.common@8.0.3\\Editor\\TextureGenerator\\TextureGeneratorHelper.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Library\\PackageCache\\com.unity.2d.common@8.0.3\\Editor\\TextureGenerator\\TextureGeneratorHelper.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.unity.2d.common@8.0.3\\Editor\\TextureGenerator\\TextureGeneratorHelper.cs",
+              "ViewState": "AQIAAMwAAAAAAAAAAAAwwG4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T01:56:26.211Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

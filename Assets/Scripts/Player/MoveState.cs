@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveState : GroundedState
 {
-    public MoveState(Player player, PlayerStateMachine stateMachine, string animStateName) : base(player, stateMachine, animStateName)
+    public MoveState(Player player, PlayerStateMachine stateMachine, string animParameterName) : base(player, stateMachine, animParameterName)
     {
 
     }

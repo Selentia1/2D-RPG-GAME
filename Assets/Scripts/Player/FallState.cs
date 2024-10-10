@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AirState : PlayerState
+public class FallState : AirState
 {
-    public AirState(Player player, PlayerStateMachine stateMachine, string animStateName) : base(player, stateMachine, animStateName)
+    public FallState(Player player, PlayerStateMachine stateMachine, string animStateName) : base(player, stateMachine, animStateName)
     {
 
     }

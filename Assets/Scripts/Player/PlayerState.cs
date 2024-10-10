@@ -9,31 +9,26 @@ public class PlayerState
     protected PlayerStateMachine stateMachine;
     protected Rigidbody2D rb;
 
-    protected string animStateName;
+    protected string animParameterName;
     protected float xInput;
 
-    public PlayerState(Player player, PlayerStateMachine stateMachine,string animStateName) 
+    public PlayerState(Player player, PlayerStateMachine stateMachine,string animParameterName) 
     { 
         this.player = player;
         this.stateMachine = stateMachine;
-        this.animStateName = animStateName;
+        this.animParameterName = animParameterName;
     }
 
     public virtual void Enter() 
     {
         rb = player.rb;
-        player.animator.SetBool(animStateName, true);
+        player.animator.SetBool(animParameterName, true);
     }
     public virtual void Exit() 
     {
-        player.animator.SetBool(animStateName, false);
+        player.animator.SetBool(animParameterName, false);
     }
     public virtual void Update() 
-    {
-        GetInput();
-    }
-
-    private void GetInput()
     {
         xInput = Input.GetAxisRaw("Horizontal");
     }

@@ -204,7 +204,6 @@ public class OldPlayer : Entity
         {
             rb.velocity = new Vector2(velocityMove, rb.velocity.y);
         }
-        
     }
 
     //¶¯»­¿ØÖÆÆ÷

@@ -21,5 +21,13 @@ public class GroundedState : PlayerState
     public override void Update()
     {
         base.Update();
+        if (rb.velocity.y > 0)
+        {
+            stateMachine.ChangeState(player.riseState);
+        }
+        else if (rb.velocity.y < 0) 
+        { 
+            
+        }
     }
 }
