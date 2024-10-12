@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class IdleState : PlayerState
+public class IdleState : GroundedState
 {
     public IdleState(Player player, PlayerStateMachine stateMachine, string animStateName) : base(player, stateMachine, animStateName)
     {

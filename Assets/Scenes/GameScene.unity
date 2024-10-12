@@ -256,7 +256,7 @@ Transform:
   m_GameObject: {fileID: 1331985860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.9093566, y: -1.17, z: -0.035980888}
+  m_LocalPosition: {x: -4.9093566, y: -1.19, z: -0.035980888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -277,17 +277,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6061668fad6c4444082e5b82e5374a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
+  jumpForce: 15
   moveSpeed: 5
   jumpTimes: 0
   faceDirection: 1
+  dashTimer: 0
+  dashDuration: 0.3
+  dashCDTimer: 0
+  dashCoolDown: 1
+  dashSpeed: 15
   layerMask_Ground:
     serializedVersion: 2
-    m_Bits: 0
-  groundCheck: {fileID: 0}
+    m_Bits: 8
+  groundCheck: {fileID: 1487757640}
   groundCheckDistance: 0.1
   isGround: 0
-  wallCheck: {fileID: 0}
+  wallCheck: {fileID: 2146025354}
   wallCheckDistance: 0.5
   isDetectedWall: 1
 --- !u!70 &1331985863
@@ -340,8 +345,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 3.5
+  m_Material: {fileID: 6200000, guid: 559b1464f93860c41aafa2b04711b55b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -745,7 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2146025354}
   m_Layer: 0
-  m_Name: WallChcek
+  m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -760,7 +765,7 @@ Transform:
   m_GameObject: {fileID: 2146025353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.47, y: -0.19, z: 0}
+  m_LocalPosition: {x: 0.04, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

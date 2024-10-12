@@ -31,5 +31,24 @@ public class PlayerState
     public virtual void Update() 
     {
         xInput = Input.GetAxisRaw("Horizontal");
+        player.animator.SetFloat("YVlocity", rb.velocity.y);
+        
+        
+        if (Input.GetKeyDown(KeyCode.Space) && player.jumpTimes < 2)
+        {
+            stateMachine.ChangeState(player.riseState);
+            player.jumpTimes++;
+        }
+
+        if (player.dashCDTimer > 0)
+        {
+            player.dashCDTimer -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.X) && player.dashCDTimer <= 0) {
+            stateMachine.ChangeState(player.dashState);
+        }
     }
+
+
 }

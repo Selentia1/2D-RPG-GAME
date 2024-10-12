@@ -22,5 +22,10 @@ public class AirState : PlayerState
     public override void Update()
     {
         base.Update();
+        player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
+        if (rb.velocity.y == 0)
+        {
+            stateMachine.ChangeState(player.idleState);
+        }
     }
 }

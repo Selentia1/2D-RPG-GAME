@@ -10,6 +10,10 @@ public class GroundedState : PlayerState
 
     public override void Enter()
     {
+        if (player.isGround) 
+        {
+            player.jumpTimes = 0;
+        }
         base.Enter();
     }
 
@@ -21,13 +25,10 @@ public class GroundedState : PlayerState
     public override void Update()
     {
         base.Update();
-        if (rb.velocity.y > 0)
+
+        if (rb.velocity.y < 0) 
         {
-            stateMachine.ChangeState(player.riseState);
-        }
-        else if (rb.velocity.y < 0) 
-        { 
-            
+            stateMachine.ChangeState(player.fallState);
         }
     }
 }
