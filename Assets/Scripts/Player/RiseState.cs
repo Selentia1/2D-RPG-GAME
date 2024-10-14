@@ -13,6 +13,7 @@ public class RiseState : AirState
     {
         base.Enter();
         player.SetVelocity(rb.velocity.x, player.jumpForce);
+        
     }
 
     public override void Exit()
@@ -22,11 +23,10 @@ public class RiseState : AirState
 
     public override void Update()
     {
-        player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
-        if(rb.velocity.y < 0 ){
+        base.Update();
+        if (rb.velocity.y < 0 ){
             stateMachine.ChangeState(player.fallState);
         }
-        base.Update();
     }
 }
 

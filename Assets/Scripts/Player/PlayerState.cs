@@ -47,7 +47,7 @@ public class PlayerState
             player.dashCDTimer -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && player.dashCDTimer <= 0) {
+        if (Input.GetKeyDown(KeyCode.Z) && player.dashCDTimer <= 0) {
             stateMachine.ChangeState(player.dashState);
         }
     }

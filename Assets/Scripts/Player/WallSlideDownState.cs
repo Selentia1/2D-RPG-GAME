@@ -27,7 +27,7 @@ public class WallSlideDownState : PlayerState
         {
             player.SetVelocity(rb.velocity.x, player.WallSlideFallSpeed);
         }
-        else if(yInput == -1)
+        else if(yInput == 1)
         {
             player.SetVelocity(rb.velocity.x, player.WallSlideFallSpeed * 2);
         }
@@ -36,12 +36,7 @@ public class WallSlideDownState : PlayerState
             player.stateMachine.ChangeState(player.idleState);
         }
 
-        if (player.IsGroundDetected()) {
-            player.stateMachine.ChangeState(player.idleState);
-            Debug.Log("2");
-        }
-
-        if (!player.IsWallDetected()) {
+        if (player.IsGroundDetected() || !player.IsWallDetected() ) {
             player.stateMachine.ChangeState(player.idleState);
         }
     }

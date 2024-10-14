@@ -11,6 +11,7 @@ public class AirState : PlayerState
 
     public override void Enter()
     {
+        player.jumpTimes = 0;
         base.Enter();
     }
 
@@ -29,9 +30,8 @@ public class AirState : PlayerState
             stateMachine.ChangeState(player.idleState);
         }
 
-        if (player.IsWallDetected()) 
+        if (player.IsWallDetected() && !player.IsGroundDetected() && xInput ==(int)player.faceDirection) 
         {
-            Debug.Log("1");
             stateMachine.ChangeState(player.wallSlideDownState);
         }
     }
