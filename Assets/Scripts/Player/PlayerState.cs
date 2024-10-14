@@ -11,6 +11,7 @@ public class PlayerState
 
     protected string animParameterName;
     protected float xInput;
+    protected float yInput;
 
     public PlayerState(Player player, PlayerStateMachine stateMachine,string animParameterName) 
     { 
@@ -31,6 +32,7 @@ public class PlayerState
     public virtual void Update() 
     {
         xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
         player.animator.SetFloat("YVlocity", rb.velocity.y);
         
         

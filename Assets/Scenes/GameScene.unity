@@ -286,15 +286,14 @@ MonoBehaviour:
   dashCDTimer: 0
   dashCoolDown: 1
   dashSpeed: 15
+  WallSlideFallSpeed: 0
   layerMask_Ground:
     serializedVersion: 2
     m_Bits: 8
   groundCheck: {fileID: 1487757640}
   groundCheckDistance: 0.1
-  isGround: 0
   wallCheck: {fileID: 2146025354}
-  wallCheckDistance: 0.5
-  isDetectedWall: 1
+  wallCheckDistance: 0.3
 --- !u!70 &1331985863
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

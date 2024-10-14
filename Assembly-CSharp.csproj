@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Entity.cs" />
     <Compile Include="Assets\Scripts\Player\RiseState.cs" />
     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Player\WallSlideDownState.cs" />
     <Compile Include="Assets\Scripts\Player\IdleState.cs" />
     <Compile Include="Assets\Scripts\Player\MoveState.cs" />
     <Compile Include="Assets\Scripts\PlayerActionEvents.cs" />

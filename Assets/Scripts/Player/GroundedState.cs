@@ -10,7 +10,7 @@ public class GroundedState : PlayerState
 
     public override void Enter()
     {
-        if (player.isGround) 
+        if (player.IsGroundDetected()) 
         {
             player.jumpTimes = 0;
         }

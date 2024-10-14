@@ -38,6 +38,5 @@ public class DashState : PlayerState
         } else if (player.dashTimer <= 0) {
             player.stateMachine.ChangeState(player.idleState);
         }
-        
     }
 }

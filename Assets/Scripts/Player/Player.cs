@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Dash Info
+    [Header("Dash Info")]
     //冲刺计时器
     public float dashTimer;
     //冲刺持续时间
@@ -24,6 +25,11 @@ public class Player : MonoBehaviour
     public float dashCoolDown;
     //冲刺速度
     public float dashSpeed;
+    #endregion
+
+    #region Wallslide Info
+    [Header("Wallslide Info")]
+    public float WallSlideFallSpeed;
     #endregion
 
     #region Componets
@@ -40,13 +46,14 @@ public class Player : MonoBehaviour
     //地面碰撞检测
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected float groundCheckDistance;
-    [SerializeField] public bool isGround;
 
     //墙面碰撞射线检测
     [SerializeField] public Transform wallCheck;
     [SerializeField] protected float wallCheckDistance;
-    [SerializeField] protected bool isDetectedWall;
     #endregion
+
+    [Header("currrntState")]
+    public PlayerState currentstate;
 
     #region PlayerStates
     public PlayerStateMachine stateMachine { get; private set; }
@@ -55,6 +62,9 @@ public class Player : MonoBehaviour
     public RiseState riseState { get; private set; }
     public FallState fallState { get; private set; }
     public DashState dashState { get; private set; }
+    public WallSlideDownState wallSlideDownState { get; private set; }
+
+   
     #endregion
 
 
@@ -70,6 +80,7 @@ public class Player : MonoBehaviour
         riseState = new RiseState(this, stateMachine, "IsAir");
         fallState = new FallState(this, stateMachine, "IsAir");
         dashState = new DashState(this, stateMachine, "IsDash");
+        wallSlideDownState = new WallSlideDownState(this, stateMachine, "IsWallSlide");
     }
 
     private void Start()
@@ -85,7 +96,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         stateMachine.currentState.Update();
-        ColliderController();
+        currentstate = stateMachine.GetCurrentState();
     }
     public void SetVelocity(float xVelocity,float yVelocity) { 
         rb.velocity = new Vector2 (xVelocity,yVelocity);
@@ -117,10 +128,8 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
     }
 
-    public virtual void ColliderController()
-    {
-        isGround = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, layerMask_Ground);
-        isDetectedWall = Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, layerMask_Ground);
-    }
+    public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, layerMask_Ground);
+    public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, layerMask_Ground);
+   
 }
 
