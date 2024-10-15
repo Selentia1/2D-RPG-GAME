@@ -30,5 +30,19 @@ public class GroundedState : PlayerState
         {
             stateMachine.ChangeState(player.fallState);
         }
+
+        if (Input.GetKeyDown(KeyCode.X) ) {
+            switch (player.attackComboo) { 
+                case 0:
+                    player.stateMachine.ChangeState(player.attack_01_State);
+                    break;
+                case 1:
+                    player.stateMachine.ChangeState(player.attack_02_State);
+                    break;
+                case 2:
+                    player.stateMachine.ChangeState(player.attack_03_State);
+                    break;
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ public class PlayerState
     protected string animParameterName;
     protected float xInput;
     protected float yInput;
-
+    public bool triggerCalled;
     public PlayerState(Player player, PlayerStateMachine stateMachine,string animParameterName) 
     { 
         this.player = player;
@@ -34,7 +34,7 @@ public class PlayerState
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
         player.animator.SetFloat("YVlocity", rb.velocity.y);
-        
+        player.animator.SetInteger("AttackComboo", player.attackComboo);
         
         if (Input.GetKeyDown(KeyCode.Space) && player.jumpTimes < 2)
         {
@@ -50,7 +50,12 @@ public class PlayerState
         if (Input.GetKeyDown(KeyCode.Z) && player.dashCDTimer <= 0) {
             stateMachine.ChangeState(player.dashState);
         }
-    }
 
+
+    }
+    public virtual void AnimationFinishTrigger()
+    {
+        triggerCalled = true;
+    }
 
 }

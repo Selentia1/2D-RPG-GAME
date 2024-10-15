@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 224889043}
   - component: {fileID: 224889044}
   - component: {fileID: 224889045}
+  - component: {fileID: 224889046}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -358,6 +359,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &224889046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224889042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62202f8d3e831c743a15c34cc8e71e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1331985860
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +437,7 @@ MonoBehaviour:
   groundCheckDistance: 0.1
   wallCheck: {fileID: 2146025354}
   wallCheckDistance: 0.3
+  attackComboo: 0
 --- !u!70 &1331985863
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

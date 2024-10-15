@@ -52,10 +52,13 @@ public class Player : MonoBehaviour
     [SerializeField] protected float wallCheckDistance;
     #endregion
 
-    [Header("currrntState")]
-    public PlayerState currentstate;
+    #region Attack Info
+    [Header("Attack Info")]
+    public int attackComboo;
+    #endregion
 
     #region PlayerStates
+    public PlayerState currentState;
     public PlayerStateMachine stateMachine { get; private set; }
     public IdleState idleState { get; private set; }
     public MoveState moveState { get; private set; }
@@ -63,8 +66,10 @@ public class Player : MonoBehaviour
     public FallState fallState { get; private set; }
     public DashState dashState { get; private set; }
     public WallSlideDownState wallSlideDownState { get; private set; }
+    public Attack_01_State attack_01_State { get; private set; }
+    public Attack_02_State attack_02_State { get; private set; }
+    public Attack_03_State attack_03_State { get; private set; }
 
-   
     #endregion
 
 
@@ -80,9 +85,11 @@ public class Player : MonoBehaviour
         riseState = new RiseState(this, stateMachine, "IsAir");
         fallState = new FallState(this, stateMachine, "IsAir");
         dashState = new DashState(this, stateMachine, "IsDash");
+        attack_01_State = new Attack_01_State(this, stateMachine, "IsAttack");
+        attack_02_State = new Attack_02_State(this, stateMachine, "IsAttack");
+        attack_03_State = new Attack_03_State(this, stateMachine, "IsAttack");
         wallSlideDownState = new WallSlideDownState(this, stateMachine, "IsWallSlide");
     }
-
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -96,7 +103,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         stateMachine.currentState.Update();
-        currentstate = stateMachine.GetCurrentState();
+        currentState = stateMachine.GetCurrentState();
     }
     public void SetVelocity(float xVelocity,float yVelocity) { 
         rb.velocity = new Vector2 (xVelocity,yVelocity);
@@ -130,6 +137,6 @@ public class Player : MonoBehaviour
 
     public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, layerMask_Ground);
     public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, layerMask_Ground);
-   
+    public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 }
 
