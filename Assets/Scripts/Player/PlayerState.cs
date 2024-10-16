@@ -24,6 +24,8 @@ public class PlayerState
     {
         rb = player.rb;
         player.animator.SetBool(animParameterName, true);
+        player.animator.SetFloat("YVlocity", rb.velocity.y);
+        player.animator.SetInteger("AttackComboo", player.attackComboo);
     }
     public virtual void Exit() 
     {
@@ -33,13 +35,18 @@ public class PlayerState
     {
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
-        player.animator.SetFloat("YVlocity", rb.velocity.y);
-        player.animator.SetInteger("AttackComboo", player.attackComboo);
-        
+
+        //任意状态都可以跳跃 
         if (Input.GetKeyDown(KeyCode.Space) && player.jumpTimes < 2)
         {
             stateMachine.ChangeState(player.riseState);
             player.jumpTimes++;
+        }
+
+        //任意状态都可以冲刺
+        if (Input.GetKeyDown(KeyCode.Z) && player.dashCDTimer <= 0)
+        {
+            stateMachine.ChangeState(player.dashState);
         }
 
         if (player.dashCDTimer > 0)
@@ -47,11 +54,10 @@ public class PlayerState
             player.dashCDTimer -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) && player.dashCDTimer <= 0) {
-            stateMachine.ChangeState(player.dashState);
+        if (player.combooResetTimer > 0)
+        {
+            player.combooResetTimer -= Time.deltaTime;
         }
-
-
     }
     public virtual void AnimationFinishTrigger()
     {

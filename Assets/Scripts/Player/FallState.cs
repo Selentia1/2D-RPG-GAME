@@ -23,6 +23,7 @@ public class FallState : AirState
     {
         base.Update();
         
+        //检测到y方向的速度大于零时切换到上升状态
         if (rb.velocity.y>0) {
            stateMachine.ChangeState(player.riseState);
         }

@@ -23,6 +23,8 @@ public class IdleState : GroundedState
     public override void Update()
     {
         base.Update();
+
+        //闲置状态 检测到X方向输入时切换到 移动状态
         if (xInput != 0)
         {
             stateMachine.ChangeState(player.moveState);

@@ -54,7 +54,12 @@ public class Player : MonoBehaviour
 
     #region Attack Info
     [Header("Attack Info")]
+    //攻击连击数
     public int attackComboo;
+    //连击数重置计时器
+    public float combooResetTimer;
+    //连击数重置周期
+    public float combooResetDuration;
     #endregion
 
     #region PlayerStates
@@ -84,11 +89,11 @@ public class Player : MonoBehaviour
         moveState = new MoveState(this, stateMachine, "Move");
         riseState = new RiseState(this, stateMachine, "IsAir");
         fallState = new FallState(this, stateMachine, "IsAir");
-        dashState = new DashState(this, stateMachine, "IsDash");
-        attack_01_State = new Attack_01_State(this, stateMachine, "IsAttack");
-        attack_02_State = new Attack_02_State(this, stateMachine, "IsAttack");
-        attack_03_State = new Attack_03_State(this, stateMachine, "IsAttack");
-        wallSlideDownState = new WallSlideDownState(this, stateMachine, "IsWallSlide");
+        dashState = new DashState(this, stateMachine, "Dash");
+        attack_01_State = new Attack_01_State(this, stateMachine, "Attack");
+        attack_02_State = new Attack_02_State(this, stateMachine, "Attack");
+        attack_03_State = new Attack_03_State(this, stateMachine, "Attack");
+        wallSlideDownState = new WallSlideDownState(this, stateMachine, "WallSlide");
     }
     private void Start()
     {
