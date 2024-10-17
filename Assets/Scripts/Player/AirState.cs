@@ -23,9 +23,9 @@ public class AirState : PlayerState
     {
         base.Update();
         player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
-
-        //任何空中状态 垂直速度为零时切回闲置状态
-        if (rb.velocity.y == 0)
+        
+        //任何空中状态 检测到地面 切换到闲置状态
+        if (player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.idleState);
         }

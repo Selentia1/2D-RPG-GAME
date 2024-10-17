@@ -23,7 +23,7 @@ public class MoveState : GroundedState
     {
         base.Update();
         player.SetVelocity(xInput * player.moveSpeed,rb.velocity.y);
-
+       
         if (xInput == 0)
         {
             stateMachine.ChangeState(player.idleState);

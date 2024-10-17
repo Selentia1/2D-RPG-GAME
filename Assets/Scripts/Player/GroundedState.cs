@@ -26,11 +26,11 @@ public class GroundedState : PlayerState
     {
         base.Update();
 
-        //检测到y方向的速度小于零则切换到下落状态
-        if (rb.velocity.y < 0) 
+        //检测不在下落时
+        if (!player.IsGroundDetected()) 
         {
-            stateMachine.ChangeState(player.fallState);
-        }
+            stateMachine.ChangeState(player.riseState);
+        } 
 
         //任何地面状态 检测到X按键输入时切换到攻击状态
         if (Input.GetKeyDown(KeyCode.X))

@@ -27,6 +27,7 @@ public class WallSlideDownState : PlayerState
     public override void Update()
     {
         base.Update();
+
         //设置爬墙下落的速度
         if (yInput == 0)
         {
@@ -44,8 +45,8 @@ public class WallSlideDownState : PlayerState
             player.stateMachine.ChangeState(player.idleState);
         }
 
-        //如果检测到地面则回到闲置状态
-        if (player.IsGroundDetected()) {
+        //如果检测到地面或者检测不到墙面则回到闲置状态
+        if (player.IsGroundDetected() || !player.IsWallDetected()) {
             player.stateMachine.ChangeState(player.idleState);
         }
     }

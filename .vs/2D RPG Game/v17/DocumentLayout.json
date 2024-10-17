@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "E:\\local unity project\\2D RPG Game\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|e:\\local unity project\\2d rpg game\\assets\\scripts\\background\\parrallaxbackground.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\background\\parrallaxbackground.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|e:\\local unity project\\2d rpg game\\assets\\scripts\\player\\wallslidedownstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\wallslidedownstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|e:\\local unity project\\2d rpg game\\assets\\scripts\\player\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\fallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\fallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\wallslidedownstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\wallslidedownstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\idlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\idlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\airstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\airstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\groundedstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,8 +43,8 @@
       "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\animationtriggers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|E:\\local unity project\\2D RPG Game\\assets\\scripts\\player\\risestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B7BB0E-DFDB-15B5-89A4-47361EF4BE31}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\risestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,95 +58,138 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "PlayerState.cs",
               "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\PlayerState.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerState.cs",
               "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\PlayerState.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerState.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAAACkAAAA1AAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAA1wA4AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T04:54:12.731Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Player.cs",
-              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\Player.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Player.cs",
-              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\Player.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\Player.cs",
-              "ViewState": "AQIAAHgAAAAAAAAAAAAYwH4AAAAFAAAA",
+              "Title": "ParrallaxBackground.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\BackGround\\ParrallaxBackground.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BackGround\\ParrallaxBackground.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\BackGround\\ParrallaxBackground.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BackGround\\ParrallaxBackground.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAiwBcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T05:04:19.213Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AirState.cs",
-              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\AirState.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\AirState.cs",
-              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\AirState.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\AirState.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAowCMAAABAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T05:17:44.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GroundedState.cs",
-              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\GroundedState.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\GroundedState.cs",
-              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\GroundedState.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\GroundedState.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAowCgAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T05:06:46.467Z",
+              "WhenOpened": "2024-10-17T09:08:01.258Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "IdleState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\IdleState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\IdleState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\IdleState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\IdleState.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowB4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T04:47:25.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FallState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\FallState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\FallState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\FallState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\FallState.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAIwBkAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T03:53:50.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RiseState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\RiseState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\RiseState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\RiseState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\RiseState.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAIwAsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T03:49:38.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Player.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\Player.cs",
+              "ViewState": "AQIAAHQAAAAAAAAAAAA3wIQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T05:04:19.213Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AirState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\AirState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\AirState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\AirState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\AirState.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAuwBkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T05:17:44.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GroundedState.cs",
+              "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\GroundedState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\GroundedState.cs",
+              "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\GroundedState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\GroundedState.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAIwCsAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T05:06:46.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "AnimationTriggers.cs",
               "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\AnimationTriggers.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\AnimationTriggers.cs",
               "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\AnimationTriggers.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\AnimationTriggers.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAiAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAywAsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T11:48:58.16Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-15T11:48:58.16Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "WallSlideDownState.cs",
               "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\WallSlideDownState.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\WallSlideDownState.cs",
               "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\WallSlideDownState.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\WallSlideDownState.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAA1wCwAAAAJAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAAAADUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-14T06:17:59.709Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MoveState.cs",
               "DocumentMoniker": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\MoveState.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\MoveState.cs",
               "ToolTip": "E:\\local unity project\\2D RPG Game\\Assets\\Scripts\\Player\\MoveState.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\MoveState.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAYAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAAIwBkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T06:26:18.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-14T06:26:18.896Z"
             }
           ]
         }

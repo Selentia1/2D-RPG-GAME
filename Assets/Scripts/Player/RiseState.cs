@@ -13,7 +13,6 @@ public class RiseState : AirState
     {
         base.Enter();
         //进入到上升状态时获得一个y方向的速度=玩家的跳跃力
-        player.SetVelocity(rb.velocity.x, player.jumpForce);
     }
 
     public override void Exit()
@@ -23,11 +22,12 @@ public class RiseState : AirState
 
     public override void Update()
     {
-        base.Update();
         //y方向的速度小于零时切换到下落状态
-        if (rb.velocity.y < 0 ){
+        if (rb.velocity.y < 0)
+        {
             stateMachine.ChangeState(player.fallState);
         }
+        base.Update();
     }
 }
 

@@ -125,11 +125,11 @@ public class Player : MonoBehaviour
     //·­×ª¿ØÖÆÆ÷
     public void FlipController(float xVelocity)
     {
-        if (xVelocity > 0 && faceDirection != FaceDirection.Right)
+        if (xVelocity > 0.001 && faceDirection != FaceDirection.Right)
         {
             Filp();
         }
-        else if (xVelocity < 0 && faceDirection != FaceDirection.Left)
+        else if (xVelocity < -0.001 && faceDirection != FaceDirection.Left)
         {
             Filp();
         }

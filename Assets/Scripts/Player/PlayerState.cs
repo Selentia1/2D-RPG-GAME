@@ -24,8 +24,7 @@ public class PlayerState
     {
         rb = player.rb;
         player.animator.SetBool(animParameterName, true);
-        player.animator.SetFloat("YVlocity", rb.velocity.y);
-        player.animator.SetInteger("AttackComboo", player.attackComboo);
+
     }
     public virtual void Exit() 
     {
@@ -33,6 +32,8 @@ public class PlayerState
     }
     public virtual void Update() 
     {
+        player.animator.SetFloat("YVlocity", rb.velocity.y);
+        player.animator.SetInteger("AttackComboo", player.attackComboo);
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
@@ -40,6 +41,7 @@ public class PlayerState
         if (Input.GetKeyDown(KeyCode.Space) && player.jumpTimes < 2)
         {
             stateMachine.ChangeState(player.riseState);
+            player.SetVelocity(rb.velocity.x, player.jumpForce);
             player.jumpTimes++;
         }
 
