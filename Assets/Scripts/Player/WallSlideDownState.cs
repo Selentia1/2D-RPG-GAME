@@ -26,7 +26,7 @@ public class WallSlideDownState : PlayerState
 
     public override void Update()
     {
-        base.Update();
+        
 
         //设置爬墙下落的速度
         if (yInput == 0)
@@ -40,6 +40,8 @@ public class WallSlideDownState : PlayerState
             player.SetVelocity(rb.velocity.x, player.WallSlideFallSpeed * 2);
         }
 
+        base.Update();
+
         //如果玩家背离移动墙面，则回到闲置状态
         if (xInput != 0 && (int)player.faceDirection != xInput) {
             player.stateMachine.ChangeState(player.idleState);
@@ -49,5 +51,6 @@ public class WallSlideDownState : PlayerState
         if (player.IsGroundDetected() || !player.IsWallDetected()) {
             player.stateMachine.ChangeState(player.idleState);
         }
+
     }
 }
