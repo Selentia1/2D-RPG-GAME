@@ -21,11 +21,11 @@ public class FallState : AirState
 
     public override void Update()
     {
-        //检测到y方向的速度大于零时切换到上升状态
+        base.Update();
+        //y方向的速度大于于零时切换到下落状态
         if (rb.velocity.y > 0)
         {
             stateMachine.ChangeState(player.riseState);
         }
-        base.Update();
     }
 }

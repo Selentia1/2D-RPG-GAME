@@ -11,9 +11,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Sword
   - 
   - 
   - 
@@ -47,6 +47,12 @@ TagManager:
   - name: Ground
     uniqueID: 1762714573
     locked: 0
+  - name: EffectBack
+    uniqueID: 4266432985
+    locked: 0
+  - name: Item
+    uniqueID: 2722391689
+    locked: 0
   - name: Decorations
     uniqueID: 2978967865
     locked: 0
@@ -55,4 +61,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 388680751
+    locked: 0
+  - name: EffectForward
+    uniqueID: 2445942501
+    locked: 0
+  - name: UI
+    uniqueID: 2610429697
     locked: 0

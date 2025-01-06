@@ -12,7 +12,6 @@ public class RiseState : AirState
     public override void Enter()
     {
         base.Enter();
-        //进入到上升状态时获得一个y方向的速度=玩家的跳跃力
     }
 
     public override void Exit()

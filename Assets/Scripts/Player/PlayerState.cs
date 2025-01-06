@@ -24,7 +24,6 @@ public class PlayerState
     {
         rb = player.rb;
         player.animator.SetBool(animParameterName, true);
-
     }
     public virtual void Exit() 
     {
@@ -41,25 +40,43 @@ public class PlayerState
         if (Input.GetKeyDown(KeyCode.Space) && player.jumpTimes < 2)
         {
             stateMachine.ChangeState(player.riseState);
+            //进入到上升状态时获得一个y方向的速度=玩家的跳跃力，注意这个速度只能放在这，放在状态内如果从其他在状态切换到上身
             player.SetVelocity(rb.velocity.x, player.jumpForce);
             player.jumpTimes++;
         }
 
         //任意状态都可以冲刺
-        if (Input.GetKeyDown(KeyCode.Z) && player.dashCDTimer <= 0)
+        if (Input.GetKeyDown(KeyCode.Z) && SkillManager.instance.dash.CkeckAndUseSkill())
         {
             stateMachine.ChangeState(player.dashState);
         }
 
-        if (player.dashCDTimer > 0)
+        //任意状态都可以防御
+        if (Input.GetKeyDown(KeyCode.C) && player.defenceCDTimer <= 0)
         {
-            player.dashCDTimer -= Time.deltaTime;
+            stateMachine.ChangeState(player.defenceState);
+        }
+
+        //任意状态都可以使用技能 残影攻击(克隆)
+        if (Input.GetKeyDown(KeyCode.F) && SkillManager.instance.clone.CkeckAndUseSkill()) {
+            stateMachine.ChangeState(player.useSkill_Clone);
+        }
+
+        //任意状态都可以使用投掷飞剑
+        if (Input.GetKeyDown(KeyCode.V) && SkillManager.instance.throwSword.CkeckSkill())
+        {
+            stateMachine.ChangeState(player.catchSwordState);
         }
 
         if (player.combooResetTimer > 0)
         {
             player.combooResetTimer -= Time.deltaTime;
         }
+
+        if (player.defenceCDTimer > 0) {
+            player.defenceCDTimer -= Time.deltaTime;
+        }
+        
     }
     public virtual void AnimationFinishTrigger()
     {

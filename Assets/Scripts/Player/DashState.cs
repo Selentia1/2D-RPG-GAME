@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class DashState : PlayerState
 {
+    private int DashAfterImageNum = 3;
+    private float DashAfterImageInterval = 0.1f;
+    private float DashAfterImageTimer = 0f;
     public DashState(Player player, PlayerStateMachine stateMachine, string animParameterName) : base(player, stateMachine, animParameterName)
     {
 
@@ -13,30 +16,52 @@ public class DashState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.dashTimer = player.dashDuration;
-        player.dashCDTimer = player.dashCoolDown;
+        SkillManager.instance.dash.skillTimer = SkillManager.instance.dash.skillDuration;
+        DashAfterImageTimer = DashAfterImageInterval;
+
+        
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.SetVelocity(0, rb.velocity.y);
+        DashAfterImageNum = 3;
     }
 
     public override void Update()
     {
-        base.Update();
-        player.dashTimer -= Time.deltaTime;
-        if (player.dashTimer > 0) {
-            if (player.faceDirection == Player.FaceDirection.Right)
+        
+        SkillManager.instance.dash.skillTimer -= Time.deltaTime;
+        DashAfterImageTimer -= Time.deltaTime;
+
+        //生成DashAfterImageNum 个残影，残影消失间隔时间为DashAfterImageInterval
+        if (DashAfterImageTimer < 0 && DashAfterImageNum > 0)
+        {
+            DashAfterImageTimer = DashAfterImageInterval;
+            SkillManager.instance.clone.CreateClone(player.transform, "DashAfterImage", player.faceDirection);
+        }
+
+        if (SkillManager.instance.dash.skillTimer > 0) {
+            if (xInput != 0)
             {
-                player.SetVelocity(player.dashSpeed, 0);
+                player.SetVelocity(SkillManager.instance.dash.dashSpeed * xInput, 0);
             }
-            else if (player.faceDirection == Player.FaceDirection.Left)
-            {
-                player.SetVelocity(-player.dashSpeed, 0);
+            else {
+                if (player.faceDirection == Direction.Dir.Right)
+                {
+                    player.SetVelocity(SkillManager.instance.dash.dashSpeed, 0);
+                }
+                else if (player.faceDirection == Direction.Dir.Left)
+                {
+                    player.SetVelocity(-SkillManager.instance.dash.dashSpeed, 0);
+                }
             }
-        } else if (player.dashTimer <= 0) {
+        } else if (SkillManager.instance.dash.skillTimer <= 0) {
             player.stateMachine.ChangeState(player.idleState);
         }
+
+        //注意一定要将base.Update();放在最下方，不然跳跃给的速度会被重置
+        base.Update();
     }
 }

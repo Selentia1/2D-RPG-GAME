@@ -12,11 +12,8 @@ public class WallSlideDownState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        //如果已经进入爬墙状态，且紧贴墙壁则重置跳跃次数
-        if (player.IsWallDetected())
-        {
-            player.jumpTimes = 0;
-        }
+        //如果已经进入爬墙状态，重置跳跃次数
+        player.jumpTimes = 0;
     }
 
     public override void Exit()
@@ -26,7 +23,11 @@ public class WallSlideDownState : PlayerState
 
     public override void Update()
     {
-        
+        //修复爬墙状态下冲刺方向的问题
+        if (Input.GetKeyDown(KeyCode.Z) && SkillManager.instance.dash.CkeckSkill())
+        {
+            
+        }
 
         //设置爬墙下落的速度
         if (yInput == 0)
@@ -42,15 +43,9 @@ public class WallSlideDownState : PlayerState
 
         base.Update();
 
-        //如果玩家背离移动墙面，则回到闲置状态
-        if (xInput != 0 && (int)player.faceDirection != xInput) {
+        //如果检测到地面 或者 玩家背里移动墙面 或者因自动向下的速度而脱离墙面 则回到闲置状态
+        if (player.IsGroundDetected() || (xInput != 0 && (int)player.faceDirection != xInput) || !player.IsWallDetected()) {
             player.stateMachine.ChangeState(player.idleState);
         }
-
-        //如果检测到地面或者检测不到墙面则回到闲置状态
-        if (player.IsGroundDetected() || !player.IsWallDetected()) {
-            player.stateMachine.ChangeState(player.idleState);
-        }
-
     }
 }
