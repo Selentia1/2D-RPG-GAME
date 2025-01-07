@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public enum HotKeyCode { 
     A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
@@ -124,6 +125,69 @@ public class HotKey : MonoBehaviour
         {
             keyName.transform.localPosition = new Vector3(keyName.transform.localPosition.x, keyNameLocalPositionUp);
         }
+    }
+
+    public void SetHotKey(HotKeyCode keyCode) {
+        this.keyCode = keyCode;
+    }
+
+    public KeyCode SwitchHotKeyCodeToKeyCode(){
+        switch (keyCode)
+        {
+            case HotKeyCode.A:
+                return KeyCode.A;
+            case HotKeyCode.B:
+                return KeyCode.B;
+            case HotKeyCode.C:
+                return KeyCode.C;
+            case HotKeyCode.D:
+                return KeyCode.D;
+            case HotKeyCode.E:
+                return KeyCode.E;
+            case HotKeyCode.F:
+                return KeyCode.F;
+            case HotKeyCode.G:
+                return KeyCode.G;
+            case HotKeyCode.H:
+                return KeyCode.H;
+            case HotKeyCode.I:
+                return KeyCode.I;
+            case HotKeyCode.J:
+                return KeyCode.J;
+            case HotKeyCode.K:
+                return KeyCode.K;
+            case HotKeyCode.L:
+                return KeyCode.L;
+            case HotKeyCode.M:
+                return KeyCode.M;
+            case HotKeyCode.N:
+                return KeyCode.N;
+            case HotKeyCode.O:
+                return KeyCode.O;
+            case HotKeyCode.P:
+                return KeyCode.P;
+            case HotKeyCode.Q:
+                return KeyCode.Q;
+            case HotKeyCode.R:
+                return KeyCode.R;
+            case HotKeyCode.S:
+                return KeyCode.S;
+            case HotKeyCode.T:
+                return KeyCode.T;
+            case HotKeyCode.U:
+                return KeyCode.U;
+            case HotKeyCode.V:
+                return KeyCode.V;
+            case HotKeyCode.W:
+                return KeyCode.W;
+            case HotKeyCode.X:
+                return KeyCode.X;
+            case HotKeyCode.Y:
+                return KeyCode.Y;
+            case HotKeyCode.Z:
+                return KeyCode.Z;
+        }
+        return KeyCode.Alpha0;
     }
 }
     

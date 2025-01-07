@@ -8,6 +8,7 @@ public class SkillManager : MonoBehaviour
     public Dash_Skill dash;
     public Clone_Skill clone;
     public ThrowSword_Skill throwSword;
+    public BlackHole_Skill blackHole;
 
     public void Awake()
     {
@@ -26,5 +27,6 @@ public class SkillManager : MonoBehaviour
         dash = GetComponent<Dash_Skill>();
         clone = GetComponent<Clone_Skill>();
         throwSword = GetComponent<ThrowSword_Skill>();
+        blackHole = GetComponent<BlackHole_Skill>();
     }
 }

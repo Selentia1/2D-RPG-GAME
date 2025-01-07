@@ -11,6 +11,7 @@ public class Player : Entity
     public float moveSpeed;
     public int jumpTimes;
     public Direction.Dir faceDirection;
+    public float defaultGravityScale;
     #endregion
 
     #region Wallslide Info
@@ -82,6 +83,8 @@ public class Player : Entity
     public UseSkillState_Clone useSkill_Clone { get; private set; }
     public CatchSowrdState catchSwordState { get; private set; }
     public ThrowSwordState throwSwordState { get; private set; } 
+
+    public UseSkillState_BlackHole useSkillState_BlackHole { get; private set; }
     #endregion
 
     #region Effect
@@ -106,7 +109,13 @@ public class Player : Entity
     #region Counter Attack Info
     #endregion
 
-
+    #region Black Hole Info
+    [Header("Black Hole Info")]
+    [SerializeField] public float blackHoleFlySpeed;
+    [SerializeField] public float blackHoleDropSpeed;
+    [SerializeField] public float blackHoleFlyDuration;
+    [SerializeField] public float blackHoleFlyTimer;
+    #endregion
     private void Awake()
     {
         stateMachine = new PlayerStateMachine();
@@ -125,6 +134,7 @@ public class Player : Entity
         useSkill_Clone = new UseSkillState_Clone(this, stateMachine, "UseCloneSkill");
         catchSwordState = new CatchSowrdState(this, stateMachine, "CatchSword");
         throwSwordState = new ThrowSwordState(this, stateMachine, "ThrowSword");
+        useSkillState_BlackHole = new UseSkillState_BlackHole(this, stateMachine, "UseBlackHoleSkill");
     }
     private void Start()
     {
@@ -140,10 +150,13 @@ public class Player : Entity
         attack_02_Check = transform.Find("Attack02Check");
         attack_03_Check = transform.Find("Attack03Check");
         counterAttackCheck = transform.Find("CounterAttackCheck");
+        defaultGravityScale = rb.gravityScale;
     }
 
     private void Update()
     {
+        animator.SetFloat("YVlocity", rb.velocity.y);
+        animator.SetInteger("AttackComboo", attackComboo);
         stateMachine.currentState.Update();
         currentState = stateMachine.GetCurrentState();
     }

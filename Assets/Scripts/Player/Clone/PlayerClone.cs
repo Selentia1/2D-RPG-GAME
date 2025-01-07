@@ -91,6 +91,18 @@ public class PlayerClone : MonoBehaviour
         ChangeState(cloneState);
     }
 
+    public void InitClone(Transform cloneTransform, Clone_Skill cloneSkill, string cloneState, Direction.Dir faceDirection,Vector3 offset)
+    {
+        this.faceDirection = faceDirection;
+        transform.position = cloneTransform.position + offset;
+        this.cloneState = cloneState;
+        this.cloneSkill = cloneSkill;
+        existDuration = cloneSkill.skillDuration;
+        existTimer = cloneSkill.skillTimer;
+        existTimer = existDuration;
+        ChangeState(cloneState);
+    }
+
     private void AnimationController() {
         SetVelocity(0, 0);
         if (this.cloneState == "DashAttack")

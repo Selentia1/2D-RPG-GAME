@@ -13,6 +13,12 @@ public class Clone_Skill : Skill
         GameObject clone = Instantiate(clonePrefab);
         clone.GetComponent<PlayerClone>().InitClone(clonePosition,this,cloneState,faceDirection);
     }
+
+    public void CreateClone(Transform clonePosition, string cloneState, Direction.Dir faceDirection,Vector3 offset)
+    {
+        GameObject clone = Instantiate(clonePrefab);
+        clone.GetComponent<PlayerClone>().InitClone(clonePosition, this, cloneState, faceDirection,offset);
+    }
     public override bool CkeckAndUseSkill()
     {
         return base.CkeckAndUseSkill();

@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Entity.cs" />
+    <Compile Include="Assets\Scripts\Skill\BlackHole_Skill.cs" />
     <Compile Include="Assets\Scripts\Items\Sword.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player\RiseState.cs" />
@@ -72,10 +73,10 @@
     <Compile Include="Assets\Scripts\Enemy\Skleton\SkeletonReactState.cs" />
     <Compile Include="Assets\Scripts\GameManager\SkillManager.cs" />
     <Compile Include="Assets\Scripts\Decrtions\Decriitons.cs" />
-    <Compile Include="Assets\Scripts\Skill\BlckHole_Skill.cs" />
     <Compile Include="Assets\Scripts\Player\Attack_02_State.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skleton\SkeletonGuardState.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Skill\BlackHole.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStateMachine.cs" />
     <Compile Include="Assets\Scripts\Player\DefenceState.cs" />
     <Compile Include="Assets\Scripts\Player\UseSkillState.cs" />
@@ -108,13 +109,13 @@
     <Compile Include="Assets\Scripts\Player\GroundedState.cs" />
     <Compile Include="Assets\Scripts\Player\Attack_03_State.cs" />
     <Compile Include="Assets\Scripts\Skill\Skill.cs" />
-    <Compile Include="Assets\Scripts\Effect\BlackHole.cs" />
     <Compile Include="Assets\Scripts\Player\Attack_01_State.cs" />
     <Compile Include="Assets\Scripts\Direction.cs" />
     <Compile Include="Assets\Scripts\Skill\Dash_Skill.cs" />
     <Compile Include="Assets\Scripts\Player\UseSkillState_Clone.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skleton\SkeletonIdlestate.cs" />
     <Compile Include="Assets\Scripts\Decrtions\Candle.cs" />
+    <Compile Include="Assets\Scripts\Player\UseSkillState_BlackHole.cs" />
     <Compile Include="Assets\Scripts\Player\CatchSowrdState.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skleton\SkeletonAttackState.cs" />
   </ItemGroup>

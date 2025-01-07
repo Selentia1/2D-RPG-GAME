@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Skeleton : Enemy
@@ -26,6 +27,7 @@ public class Skeleton : Enemy
     #region Guard Info
     //警戒状态下骷髅追踪玩家的速度,触发警戒后的持续时间
     public float traceSpeed;
+    public float defaultTraceSpeed;
     public float GuardTime;
     public float GuardTimer;
     public float GuardDistance;
@@ -48,6 +50,16 @@ public class Skeleton : Enemy
         stunnedState = new SkeletonStunnedState(this, stateMachine, "Stunned");
     }
 
+    public override void Start() {
+        base.Start();
+        stateMachine.Initialize(idleState);
+        defaultTraceSpeed = traceSpeed;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+    }
     public override void FlipController()
     {
         base.FlipController();
@@ -70,6 +82,21 @@ public class Skeleton : Enemy
         }
     }
 
+    public async override void Damaged(Direction.Dir attackDirection, float time)
+    {
+        await Task.Delay((int)(time * 1000));
+        if (stunnedTimer > 0)
+        {
+            base.Damaged(attackDirection);
+        }
+        else
+        {
+            stateMachine.ChangeState(hurtState);
+            StartCoroutine(HitKnockback(attackDirection));
+        }
+
+    }
+
     public override bool CheckAndTurnStunned()
     {
         if (base.CheckAndTurnStunned()) { 
@@ -80,17 +107,28 @@ public class Skeleton : Enemy
 
     public override void TurnStunned()
     {
+        if(canBeStunned)
         stateMachine.ChangeState(stunnedState);
     }
 
-    public override void Start()
+    public override IEnumerator FreezedTime(float freezedSeconds)
     {
-        base.Start();
-        stateMachine.Initialize(idleState);
+        return base.FreezedTime(freezedSeconds);
     }
 
-    public override void Update()
+    public override void _FreezeTime(bool isFreezing)
     {
-        base.Update();
+        if (isFreezing)
+        {
+            animator.speed = 0;
+            moveSpeed = 0;
+            traceSpeed = 0;
+        }
+        else
+        {
+            animator.speed = 1;
+            moveSpeed = deafultMoveSpeed;
+            traceSpeed = defaultTraceSpeed;
+        }
     }
 }

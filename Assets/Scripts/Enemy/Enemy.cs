@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using System.Threading.Tasks;
 using static Player;
 
 public class Enemy : Entity
@@ -75,9 +76,6 @@ public class Enemy : Entity
     public virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
-    }
-    public virtual void Start()
-    {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         collider2D = GetComponent<Collider2D>();
@@ -87,7 +85,9 @@ public class Enemy : Entity
         wallCheck = transform.Find("WallCheck");
         playerCheck = transform.Find("PlayerCheck");
         attackCheck = transform.Find("AttackCheck");
-
+    }
+    public virtual void Start()
+    {
         deafultMoveSpeed = moveSpeed;
     }
 
@@ -104,13 +104,13 @@ public class Enemy : Entity
         }
     }
 
-    public IEnumerator FreezedTime(float freezedSeconds) {
+    public virtual IEnumerator FreezedTime(float freezedSeconds) {
         _FreezeTime(true);
         yield return new WaitForSeconds(freezedSeconds);
         _FreezeTime(false);
     }
 
-    private void _FreezeTime(bool isFreezing){
+    public virtual void _FreezeTime(bool isFreezing){
         if (isFreezing)
         {
             animator.speed = 0;
@@ -133,7 +133,14 @@ public class Enemy : Entity
     }
 
     public virtual void Damaged(Direction.Dir attackDirection) {
-        Debug.Log(gameObject.name + " was damgaed!");
+        fx.StartCoroutine("FlashFX");
+        StartCoroutine(HitKnockback(attackDirection));
+
+    }
+
+    public async virtual void Damaged(Direction.Dir attackDirection,float time)
+    {
+        await Task.Delay((int)(time * 1000));
         fx.StartCoroutine("FlashFX");
         StartCoroutine(HitKnockback(attackDirection));
 
