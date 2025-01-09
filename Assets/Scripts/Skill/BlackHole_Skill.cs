@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BlackHoleType { 
+    SwordDance,
+    Explode
+}
 public class BlackHole_Skill : Skill
 {
     [Header("BlackHole Info")]
@@ -11,11 +15,12 @@ public class BlackHole_Skill : Skill
     [SerializeField] private float backSpeed;
     [SerializeField] private int amountOfAttacks;
     [SerializeField] private float cloneAttackCooldown;
+    [SerializeField] public BlackHoleType type;
     public BlackHole blackHoleScript;
 
     public void CreateBlackHole() {
         GameObject blackHole = Instantiate(blackHolePrefab,player.transform.position,Quaternion.identity);
-        blackHole.GetComponent<BlackHole>().Init(maxSize,skillDuration,growSpeed,backSpeed,amountOfAttacks,cloneAttackCooldown);
+        blackHole.GetComponent<BlackHole>().Init(maxSize,skillDuration,growSpeed,backSpeed,amountOfAttacks, cloneAttackCooldown,type);
         this.blackHoleScript = blackHole.GetComponent<BlackHole>();
     }
 

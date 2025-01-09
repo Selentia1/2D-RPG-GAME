@@ -29,6 +29,7 @@ public class HotKey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = Quaternion.identity;
         switch (keyCode)
         {
             case HotKeyCode.A:

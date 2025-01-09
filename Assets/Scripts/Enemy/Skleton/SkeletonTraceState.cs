@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
-
+using System;
 public class SkeletonTraceState : SkeletonGuardState
 {
     private Transform player;
@@ -32,7 +32,8 @@ public class SkeletonTraceState : SkeletonGuardState
                 playerTracking = false;
             }
 
-            //当玩家在左侧则向左追踪，反之在右侧则向右追踪
+            skeleton.SetVelocity(skeleton.traceSpeed * (int)skeleton.faceDirection, rb.velocity.y);
+            //当玩家在左侧则向左追踪，反之在右侧则向右追踪,当玩家和骷髅重合时设置速度为0
             if (playerTracking)
             {
                 if (skeleton.transform.position.x > player.transform.position.x && skeleton.faceDirection != Direction.Dir.Left)
@@ -43,10 +44,12 @@ public class SkeletonTraceState : SkeletonGuardState
                 {
                     skeleton.Flip();
                 }
+                else if (Math.Abs(skeleton.transform.position.x - player.transform.position.x) < 0.1)
+                {
+                    skeleton.SetVelocity(0, 0);
+                }
             }
-
-            skeleton.SetVelocity(skeleton.traceSpeed * (int)skeleton.faceDirection, rb.velocity.y);
-
+                
             //在攻击范围内则切换至攻击状态
             if (skeleton.IsAttackDetected())
             {

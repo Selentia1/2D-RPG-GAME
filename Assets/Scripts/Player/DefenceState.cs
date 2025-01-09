@@ -35,15 +35,13 @@ public class DefenceState : PlayerState
                 if(Input.GetKeyUp(KeyCode.C) && hit.GetComponent<Enemy>().canBeStunned && player.faceDirection != hit.GetComponent<Enemy>().faceDirection) {
                     counterAttackSuccessful = true;
                     stateMachine.ChangeState(player.counterAttackState);
-                    hit.GetComponent<Enemy>().CheckAndTurnStunned();
+                    hit.GetComponent<Enemy>().UnderAttack("stunned", player.faceDirection, true);
                 }
             }
         }
 
-
         if (Input.GetKeyUp(KeyCode.C) && !counterAttackSuccessful) {
             stateMachine.ChangeState(player.idleState);
         }
-
     }
 }

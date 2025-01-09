@@ -19,10 +19,9 @@ public class SkelentonAnimationTriggers : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(skeleton.attackCheck.position, skeleton.attackCheckRadius);
         foreach (var hit in colliders){
             if (hit.GetComponent<Player>() != null) {
-                hit.GetComponent<Player>().Damaged(skeleton.faceDirection);
+                hit.GetComponent<Player>().UnderAttack("damaged", skeleton.faceDirection,true);
             }
         }
-
     }
 
     private void OpenAttackCounterWindow() => skeleton.OpenAttackCounterWindow();

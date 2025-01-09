@@ -2,7 +2,7 @@ using System.Collections;
 using System.Drawing;
 using UnityEngine;
 using Color = UnityEngine.Color;
-
+using System.Threading.Tasks;
 public class Player : Entity
 {
     #region Move and Jump Info
@@ -12,6 +12,7 @@ public class Player : Entity
     public int jumpTimes;
     public Direction.Dir faceDirection;
     public float defaultGravityScale;
+
     #endregion
 
     #region Wallslide Info
@@ -83,21 +84,27 @@ public class Player : Entity
     public UseSkillState_Clone useSkill_Clone { get; private set; }
     public CatchSowrdState catchSwordState { get; private set; }
     public ThrowSwordState throwSwordState { get; private set; } 
-
+    public PrepareUseSkillState prepareUseSkillState { get; private set; }
     public UseSkillState_BlackHole useSkillState_BlackHole { get; private set; }
     #endregion
 
     #region Effect
-    private EntityFX fx;
+    public EntityFX fx { get; private set; }
     #endregion
 
     #region was Hurt
     [Header("Hurt Info")]
-    [SerializeField] protected Vector2 knockBackVelocity;
-    [SerializeField] protected float KnockBackDuration;
+    [SerializeField] protected Vector2 damagedknockBackVelocity;
+    [SerializeField] protected float damagedKnockBackDuration;
     private bool isknocked;
     #endregion
 
+    #region was Stunned
+    [Header("Hurt Info")]
+    [SerializeField] protected Vector2 stunnedknockBackVelocity;
+    [SerializeField] protected float stunnedKnockBackDuration;
+    private bool canBeStunned;
+    #endregion
     #region Defence
     [Header("Defence Info")]
     public bool isDenfend;
@@ -116,6 +123,8 @@ public class Player : Entity
     [SerializeField] public float blackHoleFlyDuration;
     [SerializeField] public float blackHoleFlyTimer;
     #endregion
+
+
     private void Awake()
     {
         stateMachine = new PlayerStateMachine();
@@ -135,6 +144,7 @@ public class Player : Entity
         catchSwordState = new CatchSowrdState(this, stateMachine, "CatchSword");
         throwSwordState = new ThrowSwordState(this, stateMachine, "ThrowSword");
         useSkillState_BlackHole = new UseSkillState_BlackHole(this, stateMachine, "UseBlackHoleSkill");
+        prepareUseSkillState = new PrepareUseSkillState(this, stateMachine, "PrepareUseSkill");
     }
     private void Start()
     {
@@ -178,20 +188,6 @@ public class Player : Entity
         attack_03_Check.transform.Rotate(0, 180, 0);
     }
 
-    public virtual void Damaged(Direction.Dir attackDirection)
-    {
-        if (isDenfend && faceDirection != attackDirection)
-        {
-            Debug.Log(gameObject.name + " was defended!");
-            fx.StartCoroutine("DefenceFX");
-        }
-        else {
-            Debug.Log(gameObject.name + " was damgaed!");
-            fx.StartCoroutine("FlashFX");
-            StartCoroutine(HitKnockback(attackDirection));
-        }
-    }
-
     //翻转控制器
     public void FlipController(float xVelocity)
     {
@@ -217,7 +213,7 @@ public class Player : Entity
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(counterAttackCheck.position, counterAttackBoxSize);
     }
-    protected virtual IEnumerator HitKnockback(Direction.Dir attackDirection) {
+    protected virtual IEnumerator HitKnockback(Direction.Dir attackDirection, Vector2 knockBackVelocity, float KnockBackDuration) {
         //这里设置速度但是不想改变玩家的方向
         rb.velocity = new Vector2(knockBackVelocity.x * (int)attackDirection, knockBackVelocity.y);
 
@@ -226,6 +222,51 @@ public class Player : Entity
         isknocked = false;
         SetVelocity(0, 0);
     }
+
+    #region UnderAttack
+    //受击判定
+    public virtual void UnderAttack(string state, Direction.Dir attackDirection, bool knockback)
+    {
+        if (state == "stunned")
+        {
+            TurnStunned(attackDirection,knockback);
+        }
+        else if (state == "damaged")
+        {
+            Damaged(attackDirection, knockback);
+        }
+    }
+
+    public virtual bool TurnStunned(Direction.Dir attackDirection, bool knockback)
+    {
+        //进入眩晕状态
+        if (canBeStunned)
+        {
+            if (knockback)
+            {
+                StartCoroutine(HitKnockback(attackDirection, stunnedknockBackVelocity, stunnedKnockBackDuration));
+            }
+            //Stun
+            return true;
+        }
+        return false;
+    }
+
+    public virtual void Damaged(Direction.Dir attackDirection, bool knockback)
+    {
+        if (isDenfend && faceDirection != attackDirection)
+        {
+            fx.StartCoroutine("DefenceFX");
+        }
+        else
+        {
+            Debug.Log(gameObject.name + " was damgaed!");
+            fx.StartCoroutine("FlashFX");
+            StartCoroutine(HitKnockback(attackDirection,damagedknockBackVelocity,damagedKnockBackDuration));
+        }
+    }
+
+    #endregion
 
     public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, layerMask_Ground);
     public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, layerMask_Ground);

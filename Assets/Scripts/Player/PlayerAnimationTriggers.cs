@@ -19,7 +19,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attack_01_Check.position, player.attack_01_Check_Radius);
         foreach (var hit in colliders) {
             if (hit.GetComponent<Enemy>() != null) {
-                hit.GetComponent<Enemy>().Damaged(player.faceDirection);
+                hit.GetComponent<Enemy>().UnderAttack("damaged", player.faceDirection,true);
             }
         }
     }
@@ -31,7 +31,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().Damaged(player.faceDirection);
+                hit.GetComponent<Enemy>().UnderAttack("damaged", player.faceDirection, true);
             }
         }
     }
@@ -43,7 +43,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().Damaged(player.faceDirection);
+                hit.GetComponent<Enemy>().UnderAttack("damaged", player.faceDirection, true);
             }
 
         }
@@ -55,7 +55,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().Damaged(player.faceDirection);
+                hit.GetComponent<Enemy>().UnderAttack("damaged", player.faceDirection, true);
             }
         }
     }

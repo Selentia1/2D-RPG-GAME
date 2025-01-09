@@ -60,19 +60,26 @@ public class Enemy : Entity
 
     #region was Damaged
     [Header("was Damaged")]
-    [SerializeField] protected Vector2 knockBackVelocity;
-    [SerializeField] protected float KnockBackDuration;
+    [SerializeField] protected Vector2 damagedKnockBackVelocity;
+    [SerializeField] protected float damagedKnockBackDuration;
     [SerializeField] private bool isknocked;
     #endregion
 
     #region Stuned Info
     [Header("Stuned Info")]
+    [SerializeField] protected Vector2 stunnedKnockBackVelocity;
+    [SerializeField] protected float stunnedKnockBackDuration;
     [SerializeField] public float stunnedDuration;
     [SerializeField] public float stunnedTimer;
     [SerializeField] public bool canBeStunned;
 
     #endregion
 
+    #region Freezed Info
+    [Header("Freezed Info")]
+    [SerializeField] public bool isFreezed;
+
+    #endregion
     public virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
@@ -111,6 +118,7 @@ public class Enemy : Entity
     }
 
     public virtual void _FreezeTime(bool isFreezing){
+        isFreezed = isFreezing;
         if (isFreezing)
         {
             animator.speed = 0;
@@ -132,19 +140,6 @@ public class Enemy : Entity
         SetVelocity(-rb.velocity.x, rb.velocity.y);
     }
 
-    public virtual void Damaged(Direction.Dir attackDirection) {
-        fx.StartCoroutine("FlashFX");
-        StartCoroutine(HitKnockback(attackDirection));
-
-    }
-
-    public async virtual void Damaged(Direction.Dir attackDirection,float time)
-    {
-        await Task.Delay((int)(time * 1000));
-        fx.StartCoroutine("FlashFX");
-        StartCoroutine(HitKnockback(attackDirection));
-
-    }
 
     //翻转控制器
     public virtual void FlipController()
@@ -159,15 +154,6 @@ public class Enemy : Entity
         Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
     }
 
-    protected virtual IEnumerator HitKnockback(Direction.Dir attackDirection)
-    {
-        SetVelocity(knockBackVelocity.x * (int)attackDirection, knockBackVelocity.y);
-        isknocked = true;
-        yield return new WaitForSeconds(KnockBackDuration);
-        isknocked = false;
-        SetVelocity(0,0);
-    }
-
     public virtual void OpenAttackCounterWindow() 
     { 
         canBeStunned = true;
@@ -178,20 +164,49 @@ public class Enemy : Entity
         canBeStunned = false;
     }
 
-    public virtual bool CheckAndTurnStunned()
+    #region UnderAttack
+    //受击判定
+    public virtual void UnderAttack(string state,Direction.Dir attackDirection,bool knockback)
     {
-        if (canBeStunned) {
-            TurnStunned();
+        if (state == "stunned")
+        {
+            TurnStunned(attackDirection, knockback);
+        }
+        else if (state == "damaged") {
+            Damaged(attackDirection, knockback);
+        }
+        
+    }
+
+    protected virtual bool TurnStunned(Direction.Dir attackDirection, bool knockback)
+    {
+        if (canBeStunned)
+        {
+            if (knockback)
+            {
+                StartCoroutine(HitKnockback(attackDirection, stunnedKnockBackVelocity, stunnedKnockBackDuration));
+            }
+            //Stun
             return true;
         }
         return false;
     }
 
-    public virtual void TurnStunned()
-    {
-        //进入眩晕状态
+    protected virtual void Damaged(Direction.Dir attackDirection,bool knockback) {
+        fx.StartCoroutine("FlashFX");
+        if (knockback) {
+            StartCoroutine(HitKnockback(attackDirection,damagedKnockBackVelocity,damagedKnockBackDuration));
+        }
     }
-
+    protected virtual IEnumerator HitKnockback(Direction.Dir attackDirection,Vector2 knockBackVelocity, float KnockBackDuration)
+    {
+        SetVelocity(knockBackVelocity.x * (int)attackDirection, knockBackVelocity.y);
+        isknocked = true;
+        yield return new WaitForSeconds(KnockBackDuration);
+        isknocked = false;
+        SetVelocity(0, 0);
+    }
+    #endregion
     public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, layerMask_Ground);
     public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, layerMask_Ground);
     public RaycastHit2D GetPLayerDetected() => Physics2D.Raycast(playerCheck.position,Vector2.right,playerCheckDistance, layerMask_Player);

@@ -68,7 +68,8 @@ public class PlayerState
 
         //任意状态都可以使用黑洞技能
         if (Input.GetKeyDown(KeyCode.G) && SkillManager.instance.blackHole.CkeckSkill()) {
-            stateMachine.ChangeState(player.useSkillState_BlackHole);
+            player.prepareUseSkillState.useSkillState = player.useSkillState_BlackHole;
+            stateMachine.ChangeState(player.prepareUseSkillState);
         }
 
         if (player.combooResetTimer > 0)

@@ -223,15 +223,19 @@ MonoBehaviour:
   attackCheck: {fileID: 9126810356914614819}
   attackCheckRadius: 0.8
   fx: {fileID: 0}
-  knockBackVelocity: {x: 10, y: 10}
-  KnockBackDuration: 0.07
+  damagedKnockBackVelocity: {x: 10, y: 10}
+  damagedKnockBackDuration: 0.07
   isknocked: 0
+  stunnedKnockBackVelocity: {x: 20, y: 10}
+  stunnedKnockBackDuration: 0.2
   stunnedDuration: 1
   stunnedTimer: 0
   canBeStunned: 0
+  isFreezed: 0
   patrolTime: 4
   patrolTimer: 0
   traceSpeed: 4
+  defaultTraceSpeed: 0
   GuardTime: 6
   GuardTimer: 0
   GuardDistance: 20
@@ -297,6 +301,7 @@ MonoBehaviour:
   flashCD: 0.2
   flashTime: 0
   stunnedFlashCD: 0.1
+  useSkillEffectAnimation: {fileID: 0}
 --- !u!1 &6925694590120551703
 GameObject:
   m_ObjectHideFlags: 0

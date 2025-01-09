@@ -70,46 +70,7 @@ public class Skeleton : Enemy
         }
     }
 
-    public override void Damaged(Direction.Dir attackDirection)
-    {
-        if (stunnedTimer > 0)
-        {
-            base.Damaged(attackDirection);
-        }
-        else {
-            stateMachine.ChangeState(hurtState);
-            StartCoroutine(HitKnockback(attackDirection));
-        }
-    }
 
-    public async override void Damaged(Direction.Dir attackDirection, float time)
-    {
-        await Task.Delay((int)(time * 1000));
-        if (stunnedTimer > 0)
-        {
-            base.Damaged(attackDirection);
-        }
-        else
-        {
-            stateMachine.ChangeState(hurtState);
-            StartCoroutine(HitKnockback(attackDirection));
-        }
-
-    }
-
-    public override bool CheckAndTurnStunned()
-    {
-        if (base.CheckAndTurnStunned()) { 
-            return true;
-        }
-        return false;
-    }
-
-    public override void TurnStunned()
-    {
-        if(canBeStunned)
-        stateMachine.ChangeState(stunnedState);
-    }
 
     public override IEnumerator FreezedTime(float freezedSeconds)
     {
@@ -130,5 +91,47 @@ public class Skeleton : Enemy
             moveSpeed = deafultMoveSpeed;
             traceSpeed = defaultTraceSpeed;
         }
+    }
+
+    public override void UnderAttack(string state, Direction.Dir attackDirection,bool knockback)
+    {
+        if (state == "stunned")
+        {
+            TurnStunned(attackDirection,knockback);
+        }
+        else if (state == "damaged")
+        {
+            Damaged(attackDirection,knockback);
+        }
+    }
+
+    protected override void Damaged(Direction.Dir attackDirection,bool knockback)
+    {
+        if (stunnedTimer > 0)
+        {
+            base.Damaged(attackDirection,knockback);
+        }
+        else
+        {
+            stateMachine.ChangeState(hurtState);
+            if (knockback)
+            {
+                StartCoroutine(HitKnockback(attackDirection, damagedKnockBackVelocity,damagedKnockBackDuration));
+            }
+
+        }
+    }
+
+    protected override bool TurnStunned(Direction.Dir attackDirection, bool knockback)
+    {
+        if (canBeStunned) {
+            stateMachine.ChangeState(stunnedState);
+            if (knockback) {
+                StartCoroutine(HitKnockback(attackDirection, stunnedKnockBackVelocity,stunnedKnockBackDuration));
+            }
+            return true;
+        }
+        return false;
+        
     }
 }

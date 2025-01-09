@@ -147,7 +147,7 @@ public class PlayerClone : MonoBehaviour
         else if (this.cloneState == "Attack")
         {
             animator.SetBool("Attack", false);
-            animator.SetInteger("AttackComboo", Random.Range(0, 2));
+            animator.SetInteger("AttackComboo", Random.Range(0, 3));
         }
         else if (this.cloneState == "DashAttack")
         {
@@ -175,7 +175,7 @@ public class PlayerClone : MonoBehaviour
         else if (this.cloneState == "Attack")
         {
             animator.SetBool("Attack", true);
-            animator.SetInteger("AttackComboo", Random.Range(0, 2));
+            animator.SetInteger("AttackComboo", Random.Range(0, 3));
         }
         else if (this.cloneState == "DashAttack")
         {
@@ -214,7 +214,7 @@ public class PlayerClone : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().Damaged(faceDirection);
+                hit.GetComponent<Enemy>().UnderAttack("damageds",faceDirection, true);
             }
         }
     }
@@ -226,7 +226,7 @@ public class PlayerClone : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().Damaged(faceDirection);
+                hit.GetComponent<Enemy>().UnderAttack("damaged", faceDirection, true);
             }
         }
     }
@@ -238,7 +238,7 @@ public class PlayerClone : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().Damaged(faceDirection);
+                hit.GetComponent<Enemy>().UnderAttack("damaged", faceDirection, true);
             }
         }
     }

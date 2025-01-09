@@ -8,16 +8,18 @@ using UnityEngine.UIElements;
 public class Clone_Skill : Skill
 {
     [SerializeField] private GameObject clonePrefab;
-    public void CreateClone(Transform clonePosition,string cloneState,Direction.Dir faceDirection) 
+    public GameObject CreateClone(Transform clonePosition,string cloneState,Direction.Dir faceDirection) 
     { 
         GameObject clone = Instantiate(clonePrefab);
         clone.GetComponent<PlayerClone>().InitClone(clonePosition,this,cloneState,faceDirection);
+        return clone;
     }
 
-    public void CreateClone(Transform clonePosition, string cloneState, Direction.Dir faceDirection,Vector3 offset)
+    public GameObject CreateClone(Transform clonePosition, string cloneState, Direction.Dir faceDirection,Vector3 offset)
     {
         GameObject clone = Instantiate(clonePrefab);
         clone.GetComponent<PlayerClone>().InitClone(clonePosition, this, cloneState, faceDirection,offset);
+        return clone;
     }
     public override bool CkeckAndUseSkill()
     {

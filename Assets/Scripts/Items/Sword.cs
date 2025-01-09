@@ -183,11 +183,11 @@ public class Sword : Item
         //剑对靠近的目标造成伤害造成伤害
         if (transform.position.x - collision.transform.position.x > 0)
         {
-            collision.GetComponent<Enemy>()?.Damaged(Direction.Dir.Left);
+            collision.GetComponent<Enemy>()?.UnderAttack("damaged",Direction.Dir.Left, true);
         }
         else
         {
-            collision.GetComponent<Enemy>()?.Damaged(Direction.Dir.Right);
+            collision.GetComponent<Enemy>()?.UnderAttack("damaged",Direction.Dir.Right, true);
         }
 
         //暂停剑的旋转动作，卡住剑

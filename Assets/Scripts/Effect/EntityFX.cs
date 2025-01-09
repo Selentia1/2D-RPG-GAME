@@ -11,20 +11,28 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private Material damagedMaterial;
     [SerializeField] public float flashCD;
     [SerializeField] private float flashTime;
+
+
+    [Header("Stunned Blink FX")]
     [SerializeField] public float stunnedFlashCD;
     private Material orignalMaterial;
 
+    [Header("EffectAnimation")]
+    private Transform effectAnimator;
+    public UseSkillEffectAnimation useSkillEffectAnimation;
 
     private void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
         orignalMaterial = sr.material;
-
+        effectAnimator = transform.Find("EffectAnimator");
+        if (effectAnimator != null) {
+            useSkillEffectAnimation = effectAnimator.GetComponentInChildren<UseSkillEffectAnimation>();
+        }
     }
 
     public IEnumerator FlashFX()
     {
-
         sr.material = damagedMaterial;
         yield return new WaitForSeconds(flashCD);
         sr.material = orignalMaterial;
