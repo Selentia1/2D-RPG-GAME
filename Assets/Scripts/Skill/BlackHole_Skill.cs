@@ -9,13 +9,13 @@ public enum BlackHoleType {
 public class BlackHole_Skill : Skill
 {
     [Header("BlackHole Info")]
+    [SerializeField] public BlackHoleType type;
     [SerializeField] private GameObject blackHolePrefab;
     [SerializeField] public float maxSize;
     [SerializeField] private float growSpeed;
     [SerializeField] private float backSpeed;
     [SerializeField] private int amountOfAttacks;
     [SerializeField] private float cloneAttackCooldown;
-    [SerializeField] public BlackHoleType type;
     public BlackHole blackHoleScript;
 
     public void CreateBlackHole() {

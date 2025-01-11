@@ -25,26 +25,22 @@ public class ThrowSword_Skill : Skill
     private Vector2 startPosition;
     #endregion
 
-
-
-
-
-    [Header("luanchDegree")]
     #region luanchDegree
+    [Header("luanchDegree")]
     [SerializeField] private float startAngleInDegrees;
     [SerializeField] private float endAngleInDegrees;
     [SerializeField] public float currentAngleInDegrees;
     #endregion
 
-    [Header("SwordNumb")]
     #region SwordNumb
+    [Header("SwordNumb")]
     [SerializeField] public int SowrdMaxSize;
     [SerializeField] public int SowrdNum;
     #endregion
 
     //µ¯Ìø½£
-    [Header("Bounce Sword Info")]
     #region Bounce Sword Info
+    [Header("Bounce Sword Info")]
     [SerializeField] private float bounceSwordGravity;
     [SerializeField] private int canBounceTimes;
     [SerializeField] private float bounceSpeed;
@@ -59,6 +55,7 @@ public class ThrowSword_Skill : Skill
 
     //Ðý×ª½£
     #endregion
+    //Ðý×ª½£
     #region Spin Sword Info
     [Header("Spin Sword Info")]
     [SerializeField] private float spinSwordGravity;

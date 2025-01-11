@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Entity.cs" />
     <Compile Include="Assets\Scripts\Skill\BlackHole_Skill.cs" />
-    <Compile Include="Assets\Scripts\Items\Sword.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Effect\UseSkillEffectAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\RiseState.cs" />
@@ -87,6 +86,7 @@
     <Compile Include="Assets\Scripts\Enemy\Skleton\Skeleton.cs" />
     <Compile Include="Assets\Scripts\Player\WallSlideDownState.cs" />
     <Compile Include="Assets\Scripts\Player\IdleState.cs" />
+    <Compile Include="Assets\Scripts\Skill\Crystal_Skill.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skleton\SkeletonPatrolState.cs" />
     <Compile Include="Assets\Scripts\Player\MoveState.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyState.cs" />
@@ -95,8 +95,12 @@
     <Compile Include="Assets\Scripts\Effect\BlackHoleAnimationTrigger.cs" />
     <Compile Include="Assets\Scripts\Effect\BlackHoleAnimation.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skleton\SkeletonStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Items\Sword\Sword.cs" />
+    <Compile Include="Assets\Scripts\UI\AimPoint.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skleton\SkeletonStunnedState.cs" />
+    <Compile Include="Assets\Scripts\Items\Crystal\CrystalAnimationTrigger.cs" />
     <Compile Include="Assets\Scripts\Player\Clone\PlayerClone.cs" />
+    <Compile Include="Assets\Scripts\Items\Crystal\Crystal.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skleton\SkeletonState.cs" />
     <Compile Include="Assets\Scripts\Player\ThrowSwordState.cs" />
     <Compile Include="Assets\Scripts\Effect\EntityFX.cs" />
@@ -111,6 +115,7 @@
     <Compile Include="Assets\Scripts\Effect\EffectAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\AirState.cs" />
     <Compile Include="Assets\Scripts\Effect\EmptyState.cs" />
+    <Compile Include="Assets\Scripts\Player\UseSkillState_Crystal.cs" />
     <Compile Include="Assets\Scripts\UI\HotKey.cs" />
     <Compile Include="Assets\Scripts\BackGround\ParrallaxBackground.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateMachine.cs" />

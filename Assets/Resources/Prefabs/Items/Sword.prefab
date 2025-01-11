@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1d076a35a6d2e45863eaa4fbba8ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exsitDuration: 2
   fadeSpeed: 1
-  existDuration: 6
   canRotate: 1
   isBouncing: 0
   enemyTarget: []
@@ -188,7 +188,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1315999431
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2004053239, guid: f6b296ee51c42564abe9c05f1c502ecd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

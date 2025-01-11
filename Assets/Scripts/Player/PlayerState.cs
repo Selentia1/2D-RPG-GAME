@@ -72,6 +72,15 @@ public class PlayerState
             stateMachine.ChangeState(player.prepareUseSkillState);
         }
 
+        //任意状态都可以发射水晶
+        if (Input.GetKeyDown(KeyCode.R) && SkillManager.instance.crystal.CkeckSkill()) {
+            if (SkillManager.instance.crystal.currentCrystal == null)
+            {
+                stateMachine.ChangeState(player.useSkillState_Crystal);
+            }
+            SkillManager.instance.crystal.UseSkill();
+        }
+
         if (player.combooResetTimer > 0)
         {
             player.combooResetTimer -= Time.deltaTime;

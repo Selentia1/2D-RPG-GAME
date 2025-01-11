@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 2322564119866561226}
   m_Layer: 7
   m_Name: Enemy_Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d012e4118d04eda47abee7b03f99480b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedMaterial: {fileID: 2100000, guid: b289ff32c3d84dc4cb6fafe0d674d0d0, type: 2}
+  whiteMaterial: {fileID: 2100000, guid: b289ff32c3d84dc4cb6fafe0d674d0d0, type: 2}
   flashCD: 0.2
   flashTime: 0
   stunnedFlashCD: 0.1

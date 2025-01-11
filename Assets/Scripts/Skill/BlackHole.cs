@@ -11,6 +11,8 @@ public class BlackHole : MonoBehaviour
 {
     #region BlackHole Info
     [Header("BlackHole Info")]
+    [SerializeField] public CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private GameObject hotKeyPrefab;
     private BlackHoleType type;
     private float maxSize;
     private float growSpeed;
@@ -22,32 +24,31 @@ public class BlackHole : MonoBehaviour
     [SerializeField] private List<GameObject> targets_HotKey;
     private CircleCollider2D circleCollider;
 
-    [SerializeField] private GameObject hotKeyPrefab;
+   
     [SerializeField] private List<HotKeyCode> QTE_List;
-    private List<HotKeyCode> temp_List;
-    [SerializeField] public CinemachineVirtualCamera virtualCamera;
+    private List<HotKeyCode> temp_List = new List<HotKeyCode>();
+
     #endregion
 
     [Header("BlackHole Sword Dance Info")]
+    [SerializeField] private GameObject playerClonePrefab;
+    [SerializeField] private List<Transform> tempTargets = new List<Transform>();
     public bool canAttack;
     public bool attackEnd;
     private int amountOfAttacks;
     private float cloneAttackCooldown;
-    [SerializeField] private GameObject playerClonePrefab;
-
     // Start is called before the first frame update
 
     [Header("BlackHole Explode Info")]
     public BlackHoleAnimation animationScrpit;
-    GameObject cameraPoint;
-    public float slowTimeScale;
-    public float TimeScaleRecoverSpeed;
+    private GameObject cameraPoint;
+    [SerializeField] private float slowTimeScale;
+    [SerializeField] private float TimeScaleRecoverSpeed;
     public bool explodeEnd;
     public bool readyToExplode;
     public bool isExplode;
     public bool isDamged;
 
-    
     void Start()
     {
         exsitTimer = exsitDuration;
@@ -200,7 +201,6 @@ public class BlackHole : MonoBehaviour
                 }
                 else if (explodeEnd)
                 {
-                    Destroy(cameraPoint);
                     Destroy(gameObject); // 销毁黑洞
                 }
             }
@@ -218,23 +218,25 @@ public class BlackHole : MonoBehaviour
             }
 
             if (isDamged) {
-                Time.timeScale = slowTimeScale;
-                cameraPoint = new GameObject("cameraPoint");
-                cameraPoint.transform.position = PlayerManger.instance.transform.position;
-                foreach (Transform target in targets)
-                {
-                    Direction.Dir dir;
-                    dir = (target.position.x - transform.position.x > 0 ? Direction.Dir.Right : Direction.Dir.Left);
-                    circleCollider.enabled = false;
-                    target.GetComponent<Enemy>()._FreezeTime(false);
-                    target.GetComponent<Enemy>().canBeStunned = true;
-                    target.GetComponent<Enemy>().UnderAttack("stunned", dir, true);
-                    cameraPoint.transform.position += target.position;
-                }
-                cameraPoint.transform.position = new Vector2(cameraPoint.transform.position.x / targets.Count + 1, cameraPoint.transform.position.y / targets.Count + 1);
-                virtualCamera.Follow = cameraPoint.transform;
-                virtualCamera.LookAt = cameraPoint.transform;
                 isDamged = false;
+                Time.timeScale = slowTimeScale;
+                
+                if (targets.Count > 0) {
+                    cameraPoint = new GameObject("cameraPoint");
+                    cameraPoint.transform.position = transform.position * 0.3f;
+                    foreach (Transform target in targets)
+                    {
+                        Direction.Dir dir;
+                        dir = (target.position.x - transform.position.x > 0 ? Direction.Dir.Right : Direction.Dir.Left);
+                        circleCollider.enabled = false;
+                        target.GetComponent<Enemy>()._FreezeTime(false);
+                        target.GetComponent<Enemy>().canBeStunned = true;
+                        target.GetComponent<Enemy>().UnderAttack("stunned", dir, true);
+                        cameraPoint.transform.position += target.position * 0.7f/(float)targets.Count;
+                    }
+                    virtualCamera.LookAt = cameraPoint.transform;
+                    virtualCamera.Follow = cameraPoint.transform;
+                }
             }
         }
     }
@@ -259,8 +261,9 @@ public class BlackHole : MonoBehaviour
             else if (Time.timeScale >= 1)
             {
                 Time.timeScale = 1;
-                virtualCamera.Follow = PlayerManger.instance.player.transform; // 改变跟随目标
-                virtualCamera.LookAt = PlayerManger.instance.player.transform; // 改变观察目标（可选）
+                virtualCamera.LookAt = PlayerManger.instance.player.transform;
+                virtualCamera.Follow = PlayerManger.instance.player.transform;
+                Destroy(cameraPoint);
             }
         }
     }
@@ -276,26 +279,31 @@ public class BlackHole : MonoBehaviour
             collision.GetComponent<Enemy>()._FreezeTime(true);
             if (type == BlackHoleType.SwordDance)
             {
-                GameObject hotKey = Instantiate(hotKeyPrefab, collision.transform.position + new Vector3(0, 1.5f), Quaternion.identity);
-                hotKey.transform.parent = collision.transform;
+                if (!tempTargets.Contains(collision.transform)) {
+                    GameObject hotKey = Instantiate(hotKeyPrefab, collision.transform.position + new Vector3(0, 1.5f), Quaternion.identity);
+                    hotKey.transform.parent = collision.transform;
 
-
-                if (temp_List.Count > 0)
-                {
-                    HotKeyCode RandomKey = temp_List[Random.Range(0, temp_List.Count)];
-                    targets_HotKey.Add(hotKey);
-                    hotKey.GetComponent<HotKey>().SetHotKey(RandomKey);
-                    temp_List.Remove(RandomKey);
+                    if (temp_List.Count > 0)
+                    {
+                        HotKeyCode RandomKey = temp_List[Random.Range(0, temp_List.Count)];
+                        Debug.Log(RandomKey);
+                        targets_HotKey.Add(hotKey);
+                        hotKey.GetComponent<HotKey>().SetHotKey(RandomKey);
+                        temp_List.Remove(RandomKey);
+                        }
+                    else if (temp_List.Count <= 0)
+                    {
+                        foreach (var keyCode in QTE_List)
+                        {
+                            temp_List.Add(keyCode);
+                        }
+                        HotKeyCode RandomKey = temp_List[Random.Range(0, temp_List.Count)];
+                        targets_HotKey.Add(hotKey);
+                        hotKey.GetComponent<HotKey>().SetHotKey(RandomKey);
+                        temp_List.Remove(RandomKey);
+                    }
+                    tempTargets.Add(collision.transform);
                 }
-                else if (temp_List.Count <= 0)
-                {
-                    temp_List = QTE_List;
-                    HotKeyCode RandomKey = temp_List[Random.Range(0, temp_List.Count)];
-                    targets_HotKey.Add(hotKey);
-                    hotKey.GetComponent<HotKey>().SetHotKey(RandomKey);
-                    temp_List.Remove(RandomKey);
-                }
-
             }
             else if (type == BlackHoleType.Explode) {
                if(!targets.Contains(collision.transform))
@@ -328,6 +336,9 @@ public class BlackHole : MonoBehaviour
         this.amountOfAttacks = amountOfAttacks;
         this.cloneAttackCooldown = cloneAttackCooldown;
         this.type = type;
-        this.temp_List = this.QTE_List;
+        foreach (var keyCode in QTE_List)
+        {
+            temp_List.Add(keyCode);
+        }
     }
 }

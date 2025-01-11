@@ -8,8 +8,6 @@ public class Sword : Item
     private Entity luancher;
     private SpriteRenderer sr;
     [SerializeField] private float fadeSpeed;
-    [SerializeField] private float existDuration;
-    private float existTimer;
     public bool canRotate = true;
 
 
@@ -50,16 +48,16 @@ public class Sword : Item
     public void SetUpPierceSword(bool isPiercing,float pierceSwordExsitTime)
     {
         this.isPiercing = isPiercing;
-        this.existDuration = pierceSwordExsitTime;
-        existTimer = existDuration;
+        this.exsitDuration = pierceSwordExsitTime;
+        existTimer = exsitDuration;
     }
     public void SetUpSpainSword(bool isSpining, float spinSwordExsitTime, float SwordMoveMaxDistance, Vector2 luanchPoint)
     {
         this.isSpining = isSpining;
-        this.existDuration = spinSwordExsitTime;
+        this.exsitDuration = spinSwordExsitTime;
         this.SwordMoveMaxDistance = SwordMoveMaxDistance;
         this.luanchPoint = luanchPoint;
-        existTimer = existDuration;
+        existTimer = exsitDuration;
     }
     protected override void Awake()
     {
@@ -77,10 +75,10 @@ public class Sword : Item
     }
     protected void Start()
     {
-        existTimer = existDuration;
+        existTimer = exsitDuration;
     }
 
-    private void Update()
+    protected override void Update()
     {
         SwordLogic();
         BounceSwordLogic();

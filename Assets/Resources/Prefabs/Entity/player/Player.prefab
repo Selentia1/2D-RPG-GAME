@@ -835,7 +835,7 @@ MonoBehaviour:
   damagedknockBackVelocity: {x: 10, y: 10}
   damagedKnockBackDuration: 0.07
   stunnedknockBackVelocity: {x: 20, y: 10}
-  stunnedKnockBackDuration: 0.07
+  stunnedKnockBackDuration: 0.2
   isDenfend: 0
   defenceCDTimer: 0
   defenceCDDuration: 0.3
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d012e4118d04eda47abee7b03f99480b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedMaterial: {fileID: 2100000, guid: b289ff32c3d84dc4cb6fafe0d674d0d0, type: 2}
+  whiteMaterial: {fileID: 2100000, guid: b289ff32c3d84dc4cb6fafe0d674d0d0, type: 2}
   flashCD: 0.15
   flashTime: 0
   stunnedFlashCD: 0

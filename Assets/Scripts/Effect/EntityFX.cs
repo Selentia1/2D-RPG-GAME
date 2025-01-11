@@ -8,7 +8,7 @@ public class EntityFX : MonoBehaviour
     private SpriteRenderer sr;
 
     [Header("Flash FX")]
-    [SerializeField] private Material damagedMaterial;
+    [SerializeField] private Material whiteMaterial;
     [SerializeField] public float flashCD;
     [SerializeField] private float flashTime;
 
@@ -33,7 +33,7 @@ public class EntityFX : MonoBehaviour
 
     public IEnumerator FlashFX()
     {
-        sr.material = damagedMaterial;
+        sr.material = whiteMaterial;
         yield return new WaitForSeconds(flashCD);
         sr.material = orignalMaterial;
     }
@@ -50,7 +50,7 @@ public class EntityFX : MonoBehaviour
     {
         if (sr.material.Equals(orignalMaterial))
         {
-            sr.material = damagedMaterial;
+            sr.material = whiteMaterial;
         }
         else 
         {

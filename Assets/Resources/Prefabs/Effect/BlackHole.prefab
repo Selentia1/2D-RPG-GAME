@@ -168,19 +168,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087f041a3f3cb9c46af0a423a0bc0a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 0}
+  hotKeyPrefab: {fileID: 7184276202880542703, guid: bff34180fefab6347b9148ff90a23688, type: 3}
   canGrow: 0
   exsitTimer: 0
   targets: []
   targets_HotKey: []
-  hotKeyPrefab: {fileID: 7184276202880542703, guid: bff34180fefab6347b9148ff90a23688, type: 3}
   QTE_List: 00000000160000001200000003000000
-  virtualCamera: {fileID: 0}
+  playerClonePrefab: {fileID: 2528613178867261695, guid: 83b3866ad2611c744a4a679d9da56cb5, type: 3}
   canAttack: 0
   attackEnd: 0
-  playerClonePrefab: {fileID: 2528613178867261695, guid: 83b3866ad2611c744a4a679d9da56cb5, type: 3}
   animationScrpit: {fileID: 0}
   slowTimeScale: 0.5
   TimeScaleRecoverSpeed: 1.5
+  cameraReturnDuration: 1
   explodeEnd: 0
   readyToExplode: 0
   isExplode: 0

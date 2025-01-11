@@ -86,6 +86,7 @@ public class Player : Entity
     public ThrowSwordState throwSwordState { get; private set; } 
     public PrepareUseSkillState prepareUseSkillState { get; private set; }
     public UseSkillState_BlackHole useSkillState_BlackHole { get; private set; }
+    public UseSkillState_Crystal useSkillState_Crystal { get; private set; }
     #endregion
 
     #region Effect
@@ -145,6 +146,7 @@ public class Player : Entity
         throwSwordState = new ThrowSwordState(this, stateMachine, "ThrowSword");
         useSkillState_BlackHole = new UseSkillState_BlackHole(this, stateMachine, "UseBlackHoleSkill");
         prepareUseSkillState = new PrepareUseSkillState(this, stateMachine, "PrepareUseSkill");
+        useSkillState_Crystal = new UseSkillState_Crystal(this, stateMachine, "LuanchCrystal");
     }
     private void Start()
     {
