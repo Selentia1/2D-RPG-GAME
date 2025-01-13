@@ -110,7 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exsitDuration: 2
+  hasMirage: 0
+  mirageSetDuration: 0
   fadeSpeed: 1
+  swordFadeSpeed: 1
   canRotate: 1
   isBouncing: 0
   enemyTarget: []

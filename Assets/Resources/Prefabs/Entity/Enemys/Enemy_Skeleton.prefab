@@ -134,9 +134,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7214589908264300861}
   - component: {fileID: 6143359040859182741}
-  - component: {fileID: 3345240528858562679}
   - component: {fileID: 5859712869014734016}
+  - component: {fileID: 3345240528858562679}
   - component: {fileID: 2322564119866561226}
+  - component: {fileID: 899947224868955103}
   m_Layer: 7
   m_Name: Enemy_Skeleton
   m_TagString: Enemy
@@ -191,55 +192,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3345240528858562679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5547150763226648296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff9c492c43c2b0499fd8becf6a863ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 0
-  moveSpeed: 2
-  deafultMoveSpeed: 0
-  jumpTimes: 0
-  faceDirection: 1
-  layerMask_Ground:
-    serializedVersion: 2
-    m_Bits: 8
-  layerMask_Player:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheck: {fileID: 8070784929050933111}
-  groundCheckDistance: 5
-  wallCheck: {fileID: 6033006117705013118}
-  wallCheckDistance: 0.4
-  playerCheck: {fileID: 2781477341764491949}
-  playerCheckDistance: 10
-  attackCheck: {fileID: 9126810356914614819}
-  attackCheckRadius: 0.8
-  fx: {fileID: 0}
-  damagedKnockBackVelocity: {x: 10, y: 10}
-  damagedKnockBackDuration: 0.07
-  isknocked: 0
-  stunnedKnockBackVelocity: {x: 20, y: 10}
-  stunnedKnockBackDuration: 0.2
-  stunnedDuration: 1
-  stunnedTimer: 0
-  canBeStunned: 0
-  isFreezed: 0
-  patrolTime: 4
-  patrolTimer: 0
-  traceSpeed: 4
-  defaultTraceSpeed: 0
-  GuardTime: 6
-  GuardTimer: 0
-  GuardDistance: 20
-  attackDistance: 1.5
 --- !u!61 &5859712869014734016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -285,6 +237,56 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0066966, y: 1.5156436}
   m_EdgeRadius: 0
+--- !u!114 &3345240528858562679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5547150763226648296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff9c492c43c2b0499fd8becf6a863ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStats: {fileID: 0}
+  jumpForce: 0
+  moveSpeed: 2
+  deafultMoveSpeed: 0
+  jumpTimes: 0
+  faceDirection: 1
+  layerMask_Ground:
+    serializedVersion: 2
+    m_Bits: 8
+  layerMask_Player:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheck: {fileID: 8070784929050933111}
+  groundCheckDistance: 5
+  wallCheck: {fileID: 6033006117705013118}
+  wallCheckDistance: 0.4
+  playerCheck: {fileID: 2781477341764491949}
+  playerCheckDistance: 10
+  attackCheck: {fileID: 9126810356914614819}
+  attackCheckRadius: 0.8
+  fx: {fileID: 0}
+  damagedKnockBackVelocity: {x: 10, y: 10}
+  damagedKnockBackDuration: 0.07
+  isknocked: 0
+  stunnedKnockBackVelocity: {x: 20, y: 10}
+  stunnedKnockBackDuration: 0.2
+  stunnedDuration: 1
+  stunnedTimer: 0
+  canBeStunned: 0
+  isFreezed: 0
+  patrolTime: 4
+  patrolTimer: 0
+  traceSpeed: 4
+  defaultTraceSpeed: 0
+  GuardTime: 6
+  GuardTimer: 0
+  GuardDistance: 20
+  attackDistance: 1.5
 --- !u!114 &2322564119866561226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +304,37 @@ MonoBehaviour:
   flashTime: 0
   stunnedFlashCD: 0.1
   useSkillEffectAnimation: {fileID: 0}
+--- !u!114 &899947224868955103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5547150763226648296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c223d8af888438d4e8539a0ed7eb454b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}
+  heath:
+    baseValue: 200
+    modifiers: 
+  energy:
+    baseValue: 0
+    modifiers: 
+  armor:
+    baseValue: 0
+    modifiers: 
+  damage:
+    baseValue: 10
+    modifiers: 
+  Strength:
+    baseValue: 0
+    modifiers: 
+  currentHeath: 0
+  currentArmor: 0
+  currentEnergy: 0
 --- !u!1 &6925694590120551703
 GameObject:
   m_ObjectHideFlags: 0

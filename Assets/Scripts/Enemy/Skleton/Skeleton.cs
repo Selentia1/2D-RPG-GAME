@@ -38,7 +38,7 @@ public class Skeleton : Enemy
     //骷髅进入攻击状态下的条件为与玩家间隔相差小于Xm
     public float attackDistance;
     #endregion
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         idleState = new SkeletonIdleState(this, stateMachine, "Idle");
@@ -50,13 +50,13 @@ public class Skeleton : Enemy
         stunnedState = new SkeletonStunnedState(this, stateMachine, "Stunned");
     }
 
-    public override void Start() {
+    protected override void Start() {
         base.Start();
         stateMachine.Initialize(idleState);
         defaultTraceSpeed = traceSpeed;
     }
 
-    public override void Update()
+    protected override void Update()
     {
         base.Update();
     }
@@ -84,6 +84,7 @@ public class Skeleton : Enemy
             animator.speed = 0;
             moveSpeed = 0;
             traceSpeed = 0;
+            SetVelocity(0, 0);
         }
         else
         {
@@ -105,7 +106,7 @@ public class Skeleton : Enemy
         }
     }
 
-    protected override void Damaged(Direction.Dir attackDirection,bool knockback)
+    public override void Damaged(Direction.Dir attackDirection,bool knockback)
     {
         if (stunnedTimer > 0)
         {
@@ -122,7 +123,7 @@ public class Skeleton : Enemy
         }
     }
 
-    protected override bool TurnStunned(Direction.Dir attackDirection, bool knockback)
+    public override bool TurnStunned(Direction.Dir attackDirection, bool knockback)
     {
         if (canBeStunned) {
             stateMachine.ChangeState(stunnedState);

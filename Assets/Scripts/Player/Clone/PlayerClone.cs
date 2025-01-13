@@ -214,7 +214,9 @@ public class PlayerClone : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().UnderAttack("damageds",faceDirection, true);
+                PlayerStats playerStats =PlayerManager.instance.stats;
+                EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
+                playerStats.DoDamage(enemyStats,"damaged",faceDirection, true);
             }
         }
     }
@@ -226,7 +228,9 @@ public class PlayerClone : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().UnderAttack("damaged", faceDirection, true);
+                PlayerStats playerStats = PlayerManager.instance.stats;
+                EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
+                playerStats.DoDamage(enemyStats, "damaged", faceDirection, true);
             }
         }
     }
@@ -238,7 +242,9 @@ public class PlayerClone : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().UnderAttack("damaged", faceDirection, true);
+                PlayerStats playerStats = PlayerManager.instance.stats;
+                EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
+                playerStats.DoDamage(enemyStats, "damaged", faceDirection, true);
             }
         }
     }

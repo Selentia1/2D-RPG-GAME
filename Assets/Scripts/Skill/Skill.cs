@@ -15,7 +15,7 @@ public class Skill : MonoBehaviour
     protected Player player;
     public virtual void Start()
     {
-        player = PlayerManger.instance.player;
+        player = PlayerManager.instance.player;
     }
     public virtual void Update() {
         if(cooldownTimer >= 0){
@@ -36,6 +36,7 @@ public class Skill : MonoBehaviour
 
     public virtual void UseSkill()
     {
+        cooldownTimer = cooldown;
         //具体如何使用技能，特效或者动做展示
     }
 
@@ -45,7 +46,6 @@ public class Skill : MonoBehaviour
         if (CkeckSkill())
         {
             UseSkill();
-            cooldownTimer = cooldown;
             return true;
         }
         return false;

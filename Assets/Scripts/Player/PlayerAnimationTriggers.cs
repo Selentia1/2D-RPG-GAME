@@ -9,7 +9,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void Start()
     {
-        player = PlayerManger.instance.player;
+        player = PlayerManager.instance.player;
     }
     private void AnimationTrigger() {
         player.AnimationTrigger();
@@ -19,7 +19,9 @@ public class PlayerAnimationTriggers : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attack_01_Check.position, player.attack_01_Check_Radius);
         foreach (var hit in colliders) {
             if (hit.GetComponent<Enemy>() != null) {
-                hit.GetComponent<Enemy>().UnderAttack("damaged", player.faceDirection,true);
+                EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
+                PlayerStats playerStats = PlayerManager.instance.stats;
+                playerStats.DoDamage(enemyStats,"damaged", player.faceDirection,true);
             }
         }
     }
@@ -31,7 +33,9 @@ public class PlayerAnimationTriggers : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().UnderAttack("damaged", player.faceDirection, true);
+                EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
+                PlayerStats playerStats = PlayerManager.instance.stats;
+                playerStats.DoDamage(enemyStats, "damaged", player.faceDirection, true);
             }
         }
     }
@@ -43,9 +47,10 @@ public class PlayerAnimationTriggers : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().UnderAttack("damaged", player.faceDirection, true);
+                EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
+                PlayerStats playerStats = PlayerManager.instance.stats;
+                playerStats.DoDamage(enemyStats, "damaged", player.faceDirection, true);
             }
-
         }
     }
 

@@ -24,7 +24,9 @@ public class CrystalAnimationTrigger : MonoBehaviour
             if (hit.GetComponent<Enemy>() != null)
             {
                 Direction.Dir dir = hit.transform.position.x - transform.position.x > 0 ? Direction.Dir.Right : Direction.Dir.Left;
-                hit.GetComponent<Enemy>().UnderAttack("damaged", dir, true);
+                EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
+                PlayerStats playerStats = PlayerManager.instance.stats;
+                playerStats.DoDamage(enemyStats,"damaged", dir, true);
             }
         }
     }   

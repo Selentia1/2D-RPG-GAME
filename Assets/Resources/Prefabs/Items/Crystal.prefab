@@ -49,10 +49,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exsitDuration: 0
   hasMirage: 1
-  mirageSetDuration: 0.2
-  fadeSpped: 2
+  mirageSetDuration: 0.18
+  fadeSpeed: 3
   canTeleport: 0
   canTeleportTimes: 0
+  aimPointPrefab: {fileID: 2523972377341680859, guid: 5ae98752a3ec02644a09ea2aa39f97f3, type: 3}
+  aimPoint: {fileID: 0}
+  crystalNumber: 0
+  crystalLock: 1
+  startAngle: 0
+  endAngle: 0
+  crystalFindEnemy: 0
+  rayAttackPrefab: {fileID: 4742736064313954250, guid: f461f0364dda5f84a97ec253f32bfec1, type: 3}
+  attackRay: {fileID: 0}
+  mask_Enemy:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!50 &2935748144231229818
 Rigidbody2D:
   serializedVersion: 4
@@ -126,7 +138,7 @@ GameObject:
   - component: {fileID: 5550525302353356767}
   - component: {fileID: 1149574540317919720}
   - component: {fileID: 5827760999787982876}
-  - component: {fileID: 7619754214866526915}
+  - component: {fileID: 5818395420719367827}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -222,7 +234,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7619754214866526915
+--- !u!114 &5818395420719367827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

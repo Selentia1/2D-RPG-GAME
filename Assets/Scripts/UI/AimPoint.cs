@@ -14,6 +14,7 @@ public class AimPoint : MonoBehaviour
     public void AimTargetEffect(bool start) {
         if (start)
         {
+            if (fx != null)
             fx.StartCoroutine("FlashFX");
         }
         else { 

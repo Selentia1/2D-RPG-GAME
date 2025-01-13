@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
     protected List<GameObject> mirages = new List<GameObject>();
     protected float mirageSetTimer;
     [SerializeField] protected float mirageSetDuration;
-    [SerializeField] protected float fadeSpped;
+    [SerializeField] protected float fadeSpeed;
 
     protected virtual void Awake()
     {
@@ -86,7 +86,7 @@ public class Item : MonoBehaviour
 
             mirage.AddComponent<SpriteRenderer>();
             mirage.GetComponent<SpriteRenderer>().sprite = spriteRenderer.sprite;
-            mirage.GetComponent<SpriteRenderer>().sortingLayerID = spriteRenderer.sortingLayerID;
+            mirage.GetComponent<SpriteRenderer>().sortingLayerName = "EffectBack";
             
             mirages.Add(mirage);
         }
@@ -99,7 +99,7 @@ public class Item : MonoBehaviour
             foreach (GameObject mirage in mirages) {
                 if (mirage.GetComponent<SpriteRenderer>().color.a > 0)
                 {
-                    mirage.GetComponent<SpriteRenderer>().color -= new UnityEngine.Color(0, 0, 0, Time.deltaTime * fadeSpped);
+                    mirage.GetComponent<SpriteRenderer>().color -= new UnityEngine.Color(0, 0, 0, Time.deltaTime * fadeSpeed);
                 }
                 else if (mirage.GetComponent<SpriteRenderer>().color.a <= 0)
                 {

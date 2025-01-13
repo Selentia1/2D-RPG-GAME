@@ -69,6 +69,7 @@ public class ThrowSword_Skill : Skill
     [SerializeField] private float spaceBetweenDots;
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private Transform dotsParent;
+    [SerializeField] private float aimDotMoveSpeed;
     private GameObject[] dots;
     #endregion
 
@@ -136,7 +137,7 @@ public class ThrowSword_Skill : Skill
 
                 if (currentAngleInDegrees >= startAngleInDegrees && endAngleInDegrees >= currentAngleInDegrees)
                 {
-                    currentAngleInDegrees++;
+                    currentAngleInDegrees+= aimDotMoveSpeed;
                 }
                 for (int i = 0; i < dots.Length; i++)
                 {
@@ -220,6 +221,7 @@ public class ThrowSword_Skill : Skill
 
     public override void UseSkill()
     {
+        base.UseSkill();
         CreateSword();
     }
 

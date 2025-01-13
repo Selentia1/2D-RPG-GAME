@@ -74,7 +74,7 @@ public class PlayerState
 
         //任意状态都可以发射水晶
         if (Input.GetKeyDown(KeyCode.R) && SkillManager.instance.crystal.CkeckSkill()) {
-            if (SkillManager.instance.crystal.currentCrystal == null)
+            if (SkillManager.instance.crystal.PlayerNeedChangeState())
             {
                 stateMachine.ChangeState(player.useSkillState_Crystal);
             }

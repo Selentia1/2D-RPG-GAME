@@ -88,7 +88,7 @@ public class BlackHole : MonoBehaviour
             }
         }
         else if (type == BlackHoleType.Explode) {
-            Transform player = PlayerManger.instance.player.transform;
+            Transform player = PlayerManager.instance.player.transform;
             while(temp_List.Count > 0) {
                 Direction.Dir dir = player.GetComponent<Player>().faceDirection;
                 GameObject hotKey = Instantiate(hotKeyPrefab, player.position + new Vector3(-0.3f * (int)dir, 1.5f), Quaternion.identity);
@@ -142,7 +142,7 @@ public class BlackHole : MonoBehaviour
 
                 if (virtualCamera != null && clone != null)
                 {
-                    PlayerManger.instance.player.gameObject.SetActive(false);
+                    PlayerManager.instance.player.gameObject.SetActive(false);
                     virtualCamera.Follow = clone.transform; // 改变跟随目标
                     virtualCamera.LookAt = clone.transform; // 改变观察目标（可选）
                 }
@@ -153,9 +153,9 @@ public class BlackHole : MonoBehaviour
         attackEnd  = true;
         if (virtualCamera != null)
         {
-            PlayerManger.instance.player.gameObject.SetActive(true);
-            virtualCamera.Follow = PlayerManger.instance.player.transform; // 改变跟随目标
-            virtualCamera.LookAt = PlayerManger.instance.player.transform; // 改变观察目标（可选）
+            PlayerManager.instance.player.gameObject.SetActive(true);
+            virtualCamera.Follow = PlayerManager.instance.player.transform; // 改变跟随目标
+            virtualCamera.LookAt = PlayerManager.instance.player.transform; // 改变观察目标（可选）
         }
     }
 
@@ -231,7 +231,10 @@ public class BlackHole : MonoBehaviour
                         circleCollider.enabled = false;
                         target.GetComponent<Enemy>()._FreezeTime(false);
                         target.GetComponent<Enemy>().canBeStunned = true;
-                        target.GetComponent<Enemy>().UnderAttack("stunned", dir, true);
+
+                        EnemyStats enemyStats = target.GetComponent<EnemyStats>();
+                        PlayerStats playerStats = PlayerManager.instance.stats;
+                        playerStats.DoDamage(enemyStats,"stunned", dir, true);
                         cameraPoint.transform.position += target.position * 0.7f/(float)targets.Count;
                     }
                     virtualCamera.LookAt = cameraPoint.transform;
@@ -261,8 +264,8 @@ public class BlackHole : MonoBehaviour
             else if (Time.timeScale >= 1)
             {
                 Time.timeScale = 1;
-                virtualCamera.LookAt = PlayerManger.instance.player.transform;
-                virtualCamera.Follow = PlayerManger.instance.player.transform;
+                virtualCamera.LookAt = PlayerManager.instance.player.transform;
+                virtualCamera.Follow = PlayerManager.instance.player.transform;
                 Destroy(cameraPoint);
             }
         }
@@ -286,7 +289,6 @@ public class BlackHole : MonoBehaviour
                     if (temp_List.Count > 0)
                     {
                         HotKeyCode RandomKey = temp_List[Random.Range(0, temp_List.Count)];
-                        Debug.Log(RandomKey);
                         targets_HotKey.Add(hotKey);
                         hotKey.GetComponent<HotKey>().SetHotKey(RandomKey);
                         temp_List.Remove(RandomKey);

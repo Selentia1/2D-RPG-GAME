@@ -70,23 +70,24 @@ public class Player : Entity
     #region PlayerStates
     public PlayerState currentState;
     public PlayerStateMachine stateMachine { get; private set; }
-    public IdleState idleState { get; private set; }
-    public MoveState moveState { get; private set; }
-    public RiseState riseState { get; private set; }
-    public FallState fallState { get; private set; }
-    public DashState dashState { get; private set; }
-    public WallSlideDownState wallSlideDownState { get; private set; }
-    public Attack_01_State attack_01_State { get; private set; }
-    public Attack_02_State attack_02_State { get; private set; }
-    public Attack_03_State attack_03_State { get; private set; }
-    public DefenceState defenceState { get; private set; }
-    public CounterAttackState counterAttackState { get; private set; }
-    public UseSkillState_Clone useSkill_Clone { get; private set; }
-    public CatchSowrdState catchSwordState { get; private set; }
-    public ThrowSwordState throwSwordState { get; private set; } 
-    public PrepareUseSkillState prepareUseSkillState { get; private set; }
-    public UseSkillState_BlackHole useSkillState_BlackHole { get; private set; }
-    public UseSkillState_Crystal useSkillState_Crystal { get; private set; }
+    public PlayerIdleState idleState { get; private set; }
+    public PlayerMoveState moveState { get; private set; }
+    public PlayerRiseState riseState { get; private set; }
+    public PlayerFallState fallState { get; private set; }
+    public PlayerDashState dashState { get; private set; }
+    public PlayerWallSlideDownState wallSlideDownState { get; private set; }
+    public PlayerAttack_01_State attack_01_State { get; private set; }
+    public PlayerAttack_02_State attack_02_State { get; private set; }
+    public PlayerAttack_03_State attack_03_State { get; private set; }
+    public PlayerDefenceState defenceState { get; private set; }
+    public PlayerCounterAttackState counterAttackState { get; private set; }
+    public PlayerUseSkillState_Clone useSkill_Clone { get; private set; }
+    public PlayerCatchSowrdState catchSwordState { get; private set; }
+    public PlayerThrowSwordState throwSwordState { get; private set; } 
+    public PlayerPrepareUseSkillState prepareUseSkillState { get; private set; }
+    public PlayerUseSkillState_BlackHole useSkillState_BlackHole { get; private set; }
+    public PlayerUseSkillState_Crystal useSkillState_Crystal { get; private set; }
+    public PlayerDeadState playerDeathState { get; private set; }
     #endregion
 
     #region Effect
@@ -126,29 +127,31 @@ public class Player : Entity
     #endregion
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         stateMachine = new PlayerStateMachine();
-        idleState = new IdleState(this,stateMachine,"Idle");
-        moveState = new MoveState(this, stateMachine, "Move"); 
-        moveState = new MoveState(this, stateMachine, "Move");
-        riseState = new RiseState(this, stateMachine, "IsAir");
-        fallState = new FallState(this, stateMachine, "IsAir");
-        dashState = new DashState(this, stateMachine, "Dash");
-        attack_01_State = new Attack_01_State(this, stateMachine, "Attack");
-        attack_02_State = new Attack_02_State(this, stateMachine, "Attack");
-        attack_03_State = new Attack_03_State(this, stateMachine, "Attack");
-        wallSlideDownState = new WallSlideDownState(this, stateMachine, "WallSlide");
-        defenceState = new DefenceState(this, stateMachine, "Defence");
-        counterAttackState = new CounterAttackState(this, stateMachine, "CounterAttack");
-        useSkill_Clone = new UseSkillState_Clone(this, stateMachine, "UseCloneSkill");
-        catchSwordState = new CatchSowrdState(this, stateMachine, "CatchSword");
-        throwSwordState = new ThrowSwordState(this, stateMachine, "ThrowSword");
-        useSkillState_BlackHole = new UseSkillState_BlackHole(this, stateMachine, "UseBlackHoleSkill");
-        prepareUseSkillState = new PrepareUseSkillState(this, stateMachine, "PrepareUseSkill");
-        useSkillState_Crystal = new UseSkillState_Crystal(this, stateMachine, "LuanchCrystal");
+        idleState = new PlayerIdleState(this,stateMachine,"Idle");
+        moveState = new PlayerMoveState(this, stateMachine, "Move"); 
+        moveState = new PlayerMoveState(this, stateMachine, "Move");
+        riseState = new PlayerRiseState(this, stateMachine, "IsAir");
+        fallState = new PlayerFallState(this, stateMachine, "IsAir");
+        dashState = new PlayerDashState(this, stateMachine, "Dash");
+        attack_01_State = new PlayerAttack_01_State(this, stateMachine, "Attack");
+        attack_02_State = new PlayerAttack_02_State(this, stateMachine, "Attack");
+        attack_03_State = new PlayerAttack_03_State(this, stateMachine, "Attack");
+        wallSlideDownState = new PlayerWallSlideDownState(this, stateMachine, "WallSlide");
+        defenceState = new PlayerDefenceState(this, stateMachine, "Defence");
+        counterAttackState = new PlayerCounterAttackState(this, stateMachine, "CounterAttack");
+        useSkill_Clone = new PlayerUseSkillState_Clone(this, stateMachine, "UseCloneSkill");
+        catchSwordState = new PlayerCatchSowrdState(this, stateMachine, "CatchSword");
+        throwSwordState = new PlayerThrowSwordState(this, stateMachine, "ThrowSword");
+        useSkillState_BlackHole = new PlayerUseSkillState_BlackHole(this, stateMachine, "UseBlackHoleSkill");
+        prepareUseSkillState = new PlayerPrepareUseSkillState(this, stateMachine, "PrepareUseSkill");
+        useSkillState_Crystal = new PlayerUseSkillState_Crystal(this, stateMachine, "LuanchCrystal");
+        playerDeathState = new PlayerDeadState(this, stateMachine, "Die");
     }
-    private void Start()
+    protected override void Start()
     {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -165,7 +168,7 @@ public class Player : Entity
         defaultGravityScale = rb.gravityScale;
     }
 
-    private void Update()
+    protected override void Update()
     {
         animator.SetFloat("YVlocity", rb.velocity.y);
         animator.SetInteger("AttackComboo", attackComboo);
@@ -215,10 +218,9 @@ public class Player : Entity
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(counterAttackCheck.position, counterAttackBoxSize);
     }
-    protected virtual IEnumerator HitKnockback(Direction.Dir attackDirection, Vector2 knockBackVelocity, float KnockBackDuration) {
+    public override IEnumerator HitKnockback(Direction.Dir attackDirection, Vector2 knockBackVelocity, float KnockBackDuration) {
         //这里设置速度但是不想改变玩家的方向
         rb.velocity = new Vector2(knockBackVelocity.x * (int)attackDirection, knockBackVelocity.y);
-
         isknocked = true;
         yield return new WaitForSeconds(KnockBackDuration);
         isknocked = false;
@@ -227,19 +229,12 @@ public class Player : Entity
 
     #region UnderAttack
     //受击判定
-    public virtual void UnderAttack(string state, Direction.Dir attackDirection, bool knockback)
+    public override void UnderAttack(string state, Direction.Dir attackDirection, bool knockback)
     {
-        if (state == "stunned")
-        {
-            TurnStunned(attackDirection,knockback);
-        }
-        else if (state == "damaged")
-        {
-            Damaged(attackDirection, knockback);
-        }
+        base.UnderAttack(state, attackDirection, knockback);
     }
 
-    public virtual bool TurnStunned(Direction.Dir attackDirection, bool knockback)
+    public override bool TurnStunned(Direction.Dir attackDirection, bool knockback)
     {
         //进入眩晕状态
         if (canBeStunned)
@@ -254,7 +249,7 @@ public class Player : Entity
         return false;
     }
 
-    public virtual void Damaged(Direction.Dir attackDirection, bool knockback)
+    public override void Damaged(Direction.Dir attackDirection, bool knockback)
     {
         if (isDenfend && faceDirection != attackDirection)
         {
@@ -262,10 +257,14 @@ public class Player : Entity
         }
         else
         {
-            Debug.Log(gameObject.name + " was damgaed!");
             fx.StartCoroutine("FlashFX");
             StartCoroutine(HitKnockback(attackDirection,damagedknockBackVelocity,damagedKnockBackDuration));
         }
+    }
+
+    public override void Die()
+    {
+        stateMachine.ChangeState(playerDeathState);
     }
 
     #endregion

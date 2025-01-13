@@ -5,12 +5,10 @@ using UnityEngine;
 public class Sword : Item
 {
     [Header("Sword Info")]
+    [SerializeField] private float swordFadeSpeed;
     private Entity luancher;
     private SpriteRenderer sr;
-    [SerializeField] private float fadeSpeed;
     public bool canRotate = true;
-
-
 
     #region Sword Bounce Info
     [SerializeField] private bool isBouncing;
@@ -99,7 +97,7 @@ public class Sword : Item
             }
             else
             {
-                sr.color = new Color(1, 1, 1, sr.color.a - Time.deltaTime * fadeSpeed);
+                sr.color = new Color(1, 1, 1, sr.color.a - Time.deltaTime * swordFadeSpeed);
                 if (sr.color.a <= 0)
                 {
                     Destroy(this.gameObject);
@@ -108,7 +106,7 @@ public class Sword : Item
         }
         else
         {
-            sr.color = new Color(1, 1, 1, sr.color.a - Time.deltaTime * fadeSpeed);
+            sr.color = new Color(1, 1, 1, sr.color.a - Time.deltaTime * swordFadeSpeed);
             if (sr.color.a <= 0)
             {
                 Destroy(this.gameObject);
@@ -134,7 +132,7 @@ public class Sword : Item
         }
         else if (isBouncing && canBounceTimes <= 0)
         {
-            sr.color = new Color(1, 1, 1, sr.color.a - Time.deltaTime * fadeSpeed * 5);
+            sr.color = new Color(1, 1, 1, sr.color.a - Time.deltaTime * swordFadeSpeed * 5);
             if (sr.color.a <= 0)
             {
                 Destroy(this.gameObject);
@@ -176,17 +174,27 @@ public class Sword : Item
                     }
                 }
             }
+
+
         }
 
-        //剑对靠近的目标造成伤害造成伤害
-        if (transform.position.x - collision.transform.position.x > 0)
-        {
-            collision.GetComponent<Enemy>()?.UnderAttack("damaged",Direction.Dir.Left, true);
+        if (collision.GetComponent<Enemy>() != null) {
+            //剑对靠近的目标造成伤害造成伤害
+            if (transform.position.x - collision.transform.position.x > 0)
+            {
+                EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+                PlayerStats playerStats = PlayerManager.instance.stats;
+                playerStats.DoDamage(enemyStats, "damaged", Direction.Dir.Left, true);
+            }
+            else
+            {
+                EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+                PlayerStats playerStats = PlayerManager.instance.stats;
+                playerStats.DoDamage(enemyStats, "damaged", Direction.Dir.Right, true);
+            }
         }
-        else
-        {
-            collision.GetComponent<Enemy>()?.UnderAttack("damaged",Direction.Dir.Right, true);
-        }
+
+
 
         //暂停剑的旋转动作，卡住剑
         StuckSowrd(collision);

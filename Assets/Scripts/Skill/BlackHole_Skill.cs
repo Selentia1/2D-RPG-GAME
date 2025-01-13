@@ -26,8 +26,8 @@ public class BlackHole_Skill : Skill
 
     public override void UseSkill()
     {
+        base.UseSkill();
         CreateBlackHole();
-        cooldownTimer = cooldown;
     }
 
     public override bool CkeckSkill()

@@ -80,8 +80,9 @@ public class Enemy : Entity
     [SerializeField] public bool isFreezed;
 
     #endregion
-    public virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         stateMachine = new EnemyStateMachine();
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -93,12 +94,12 @@ public class Enemy : Entity
         playerCheck = transform.Find("PlayerCheck");
         attackCheck = transform.Find("AttackCheck");
     }
-    public virtual void Start()
+    protected override void Start()
     {
         deafultMoveSpeed = moveSpeed;
     }
 
-    public virtual void Update()
+    protected override void Update()
     {
         stateMachine.currentState.Update();
         currentState = stateMachine.GetCurrentState();
@@ -111,13 +112,13 @@ public class Enemy : Entity
         }
     }
 
-    public virtual IEnumerator FreezedTime(float freezedSeconds) {
+    public override IEnumerator FreezedTime(float freezedSeconds) {
         _FreezeTime(true);
         yield return new WaitForSeconds(freezedSeconds);
         _FreezeTime(false);
     }
 
-    public virtual void _FreezeTime(bool isFreezing){
+    public override void _FreezeTime(bool isFreezing){
         isFreezed = isFreezing;
         if (isFreezing)
         {
@@ -166,19 +167,12 @@ public class Enemy : Entity
 
     #region UnderAttack
     //ÊÜ»÷ÅÐ¶¨
-    public virtual void UnderAttack(string state,Direction.Dir attackDirection,bool knockback)
+    public override void UnderAttack(string state,Direction.Dir attackDirection,bool knockback)
     {
-        if (state == "stunned")
-        {
-            TurnStunned(attackDirection, knockback);
-        }
-        else if (state == "damaged") {
-            Damaged(attackDirection, knockback);
-        }
-        
+        base.UnderAttack(state,attackDirection,knockback);
     }
 
-    protected virtual bool TurnStunned(Direction.Dir attackDirection, bool knockback)
+    public override bool TurnStunned(Direction.Dir attackDirection, bool knockback)
     {
         if (canBeStunned)
         {
@@ -192,13 +186,13 @@ public class Enemy : Entity
         return false;
     }
 
-    protected virtual void Damaged(Direction.Dir attackDirection,bool knockback) {
+    public override void Damaged(Direction.Dir attackDirection,bool knockback) {
         fx.StartCoroutine("FlashFX");
         if (knockback) {
             StartCoroutine(HitKnockback(attackDirection,damagedKnockBackVelocity,damagedKnockBackDuration));
         }
     }
-    protected virtual IEnumerator HitKnockback(Direction.Dir attackDirection,Vector2 knockBackVelocity, float KnockBackDuration)
+    public override IEnumerator HitKnockback(Direction.Dir attackDirection,Vector2 knockBackVelocity, float KnockBackDuration)
     {
         SetVelocity(knockBackVelocity.x * (int)attackDirection, knockBackVelocity.y);
         isknocked = true;

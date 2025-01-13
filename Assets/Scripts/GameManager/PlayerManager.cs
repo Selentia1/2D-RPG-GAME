@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManger : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManger instance;
-    [SerializeField]public Player player; 
+    public static PlayerManager instance;
+    [SerializeField]public Player player;
+    [SerializeField]public PlayerStats stats;
 
     public void Awake()
     {
-        if(PlayerManger.instance != null ){ 
+        if(PlayerManager.instance != null ){ 
             Destroy(instance.gameObject);
         }else { 
             instance = this;

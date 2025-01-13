@@ -46,7 +46,7 @@ public class SkeletonTraceState : SkeletonGuardState
                 }
                 else if (Math.Abs(skeleton.transform.position.x - player.transform.position.x) < 0.1)
                 {
-                    skeleton.SetVelocity(0, 0);
+                    skeleton.SetVelocity(0, rb.velocity.y);
                 }
             }
                 

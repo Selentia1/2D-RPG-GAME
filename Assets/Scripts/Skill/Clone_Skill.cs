@@ -27,6 +27,7 @@ public class Clone_Skill : Skill
     }
     public override void UseSkill()
     {
+        base.UseSkill();
         CreateClone(player.transform,"DashAttack",player.faceDirection);
     }
 }
